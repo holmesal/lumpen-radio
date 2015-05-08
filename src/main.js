@@ -1,5 +1,5 @@
 import React from "react-native";
-import App from "./components/app";
+import App from "./components/App";
 
 let {AppRegistry} = React;
 

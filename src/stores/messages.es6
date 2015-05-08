@@ -9,7 +9,7 @@ const messages = [
   "Hi there!"
 ];
 
-let AppMessageStore = Reflux.createStore({
+let Messages = Reflux.createStore({
   listenables: [Actions],
 
   init() {
@@ -31,4 +31,4 @@ let AppMessageStore = Reflux.createStore({
   }
 });
 
-export default AppMessageStore;
+export default Messages;

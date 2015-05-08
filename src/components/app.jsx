@@ -3,7 +3,7 @@ import Reflux from "reflux";
 
 import Styles from "../styles";
 import Actions from "../actions";
-import AppMessageStore from "../stores/app_message_store";
+import AppMessageStore from "../stores/messages";
 
 let {
   View,

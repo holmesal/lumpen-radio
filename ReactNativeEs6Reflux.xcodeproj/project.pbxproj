@@ -23,8 +23,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		DD3B4C1B1AFDC1DA00BCD40D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		DD3B4C4D1AFDCD3400BCD40D /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B4C4C1AFDCD3400BCD40D /* AudioManager.m */; };
+		DDF8C1BD1B012E4F0000C2B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF8C1BA1B012E4F0000C2B4 /* AppDelegate.m */; };
+		DDF8C1BE1B012E4F0000C2B4 /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF8C1BC1B012E4F0000C2B4 /* AudioManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,8 +120,6 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* ReactNativeEs6RefluxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactNativeEs6RefluxTests.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ReactNativeEs6Reflux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactNativeEs6Reflux.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = iOS/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = iOS/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = iOS/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = iOS/Info.plist; sourceTree = "<group>"; };
@@ -133,8 +131,11 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		DD3B4C341AFDC76C00BCD40D /* libPods-StreamingKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-StreamingKit.a"; path = "Pods/../build/Debug-iphoneos/libPods-StreamingKit.a"; sourceTree = "<group>"; };
-		DD3B4C4B1AFDCD3400BCD40D /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioManager.h; path = iOS/AudioManager.h; sourceTree = "<group>"; };
-		DD3B4C4C1AFDCD3400BCD40D /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioManager.m; path = iOS/AudioManager.m; sourceTree = "<group>"; };
+		DDF8C1B91B012E4F0000C2B4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DDF8C1BA1B012E4F0000C2B4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DDF8C1BB1B012E4F0000C2B4 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
+		DDF8C1BC1B012E4F0000C2B4 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioManager.m; sourceTree = "<group>"; };
+		DDF8C1BF1B012F240000C2B4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,15 +243,12 @@
 		13B07FAE1A68108700A75B9A /* ReactNativeEs6Reflux */ = {
 			isa = PBXGroup;
 			children = (
+				DDF8C1AE1B012C320000C2B4 /* Helpers */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
-				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				DD3B4C4B1AFDCD3400BCD40D /* AudioManager.h */,
-				DD3B4C4C1AFDCD3400BCD40D /* AudioManager.m */,
 			);
 			name = ReactNativeEs6Reflux;
 			sourceTree = "<group>";
@@ -335,6 +333,19 @@
 				00E356EE1AD99517003FC87E /* ReactNativeEs6RefluxTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DDF8C1AE1B012C320000C2B4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DDF8C1B91B012E4F0000C2B4 /* AppDelegate.h */,
+				DDF8C1BA1B012E4F0000C2B4 /* AppDelegate.m */,
+				DDF8C1BB1B012E4F0000C2B4 /* AudioManager.h */,
+				DDF8C1BC1B012E4F0000C2B4 /* AudioManager.m */,
+				DDF8C1BF1B012F240000C2B4 /* Constants.h */,
+			);
+			name = Helpers;
+			path = iOS/Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -592,9 +603,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD3B4C1B1AFDC1DA00BCD40D /* AppDelegate.m in Sources */,
+				DDF8C1BE1B012E4F0000C2B4 /* AudioManager.m in Sources */,
+				DDF8C1BD1B012E4F0000C2B4 /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				DD3B4C4D1AFDCD3400BCD40D /* AudioManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,12 +7,12 @@ let Styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#202020"
+    backgroundColor: "white"
   },
 
   appLogo: {
-    width: 100,
-    height: 100,
+    width: 250,
+    height: 300,
     marginTop: 20,
     marginBottom: 20,
     borderRadius: 14
@@ -20,7 +20,7 @@ let Styles = StyleSheet.create({
 
   appMessage: {
     fontSize: 20,
-    color: "white",
+    color: "black",
     fontFamily: "Avenir-Medium",
     alignSelf: "center"
   },

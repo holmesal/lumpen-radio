@@ -1,12 +1,12 @@
-import Reflux from "reflux";
-import Actions from "../actions";
+import Reflux from 'reflux';
+import Actions from '../actions';
 
 const messages = [
-  "Hello, React!",
-  "Today is a good day.",
-  "How do I computer",
-  "Stop poking me!",
-  "Hi there!"
+  'Hello, Lumpen Radio!',
+  'How do I WLPN?',
+  'Listen now.',
+  'Stop poking me!',
+  'I can haz musik?!'
 ];
 
 let Messages = Reflux.createStore({

@@ -7,7 +7,7 @@ var path = require("path");
 
 module.exports = {
   watch: true,
-  entry: path.join(__dirname, "/src/main.js"),
+  entry: path.join(__dirname, "/src/main.es6"),
   externals: [require("./ignored-modules")],
   module: {
     loaders: [

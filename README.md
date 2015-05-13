@@ -27,5 +27,6 @@ Lumpen Radio is here. Almost...
     npm install
     ```
 
-3. Start the webpack watcher (it builds the `index.ios.js` file expected by React Native)
+3. Run `npm start` to start the Webpack watcher and the React Packager.
+   **Note:** The Webpack watcher builds the `index.ios.js` file expected by React Native.
 4. Open `ReactNativeEs6Reflux.xcodeproj` in XCode and run the project.

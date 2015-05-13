@@ -5,7 +5,8 @@ import Actions from '../actions';
 import Messages from '../stores/messages';
 import styles from '../styles';
 
-import { AudioPlayer } from '../lib/audio'
+import { AudioPlayer } from '../lib/audio';
+import Video from 'react-native-video';
 
 let {
   View,
@@ -48,6 +49,16 @@ let App = React.createClass({
 
     return (
       <View style={styles.appContainer}>
+        <TouchableOpacity>
+          <Video source={{uri: 'turntable-loop-1920x500-h264-512kbps-h264'}}
+            style={styles.backgroundVideo}
+            rate={1} // use this.state.rate etc for the rest
+            muted={true}
+            resizeMode='cover'
+            repeat={true}
+          />
+        </TouchableOpacity>
+
         <Text style={[styles.appMessage, styles.appSubMessage]}>
           Tap the icon below to start playing Lumpen Radio.
         </Text>

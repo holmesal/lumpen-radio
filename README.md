@@ -13,6 +13,7 @@ Lumpen Radio is here. Almost...
 - Show progress for initial connection
 - Allow audio disruption for calls, etc.
 - Provide on-air off-air user feedback
+- Automatically reconnect if disconnected
 - Indicate progress for long-running ops
 - Icon long-press resets HTTP connection
 

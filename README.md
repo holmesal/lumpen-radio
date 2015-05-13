@@ -6,16 +6,17 @@ Lumpen Radio is here. Almost...
 
 - Streams Lumpen Radio over HTTP
 - Alerts user when not connected to Wi-Fi
+- Plays video loop in background
 
-## Roadmap
+## Todo
 
-- Add background playback support
-- Show progress for initial connection
-- Allow audio disruption for calls, etc.
-- Provide on-air off-air user feedback
-- Automatically reconnect if disconnected
-- Indicate progress for long-running ops
-- Icon long-press resets HTTP connection
+- [ ] Add background playback support
+- [ ] Show progress for initial connection
+- [ ] Allow audio disruption for calls, etc.
+- [ ] Provide on-air off-air user feedback
+- [ ] Automatically reconnect if disconnected
+- [ ] Indicate progress for long-running ops
+- [ ] Icon long-press resets HTTP connection
 
 ## Getting started
 

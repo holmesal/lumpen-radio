@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "react-native": "^0.4.2",
-    "react-native-video": "git://github.com/jhabdas/react-native-video.git#53b71d8533d45ace842100d6e88e5b6d24fc71d3",
+    "react-native-video": "^0.3.6",
     "reflux": "^0.2.7"
   },
   "devDependencies": {

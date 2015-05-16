@@ -8,6 +8,8 @@ import styles from '../styles';
 import { AudioPlayer } from '../lib/audio';
 import Video from 'react-native-video';
 
+import AppMessage from './AppMessage'
+
 let {
   View,
   Text,
@@ -22,11 +24,10 @@ let App = React.createClass({
 
   getInitialState() {
     this.subscription = DeviceEventEmitter.addListener(
-      'AudioBridgeEvent', (event) => this.setState(event)
+      'AudioBridgeEvent', (evt) => this.setState(evt)
     );
     AudioPlayer.getStatus((error, status) => {
-      console.log(error);
-      this.setState(status);
+      (error) ? console.log(error) : this.setState(status)
     });
     return { status: 'STOPPED' };
   },
@@ -49,18 +50,19 @@ let App = React.createClass({
 
     return (
       <View style={styles.appContainer}>
-        <TouchableOpacity>
-          <Video source={{uri: 'turntable-loop-1920x500-h264-512kbps-h264'}}
-            style={styles.backgroundVideo}
-            rate={1} // use this.state.rate etc for the rest
-            muted={true}
-            resizeMode='cover'
-            repeat={true}
-          />
-        </TouchableOpacity>
+        <Video source={{uri: 'turntable-loop-1920x500-h264-512kbps-h264'}}
+          style={styles.backgroundVideo}
+          rate={1} // TODO: use this.state.rate etc for the rest
+          muted={true}
+          resizeMode='cover'
+          repeat={true}
+        />
 
+        <Text style={styles.appMessage}>
+          Lumpen Radio
+        </Text>
         <Text style={[styles.appMessage, styles.appSubMessage]}>
-          Tap the icon below to start playing Lumpen Radio.
+          WLPN 105.5 FM Chicago
         </Text>
 
         <TouchableOpacity
@@ -71,10 +73,7 @@ let App = React.createClass({
           />
         </TouchableOpacity>
 
-        <Text style={styles.appMessage}>{this.state.message}</Text>
-        <Text style={[styles.appMessage, styles.appSubMessage]}>
-          Now streaming WLPN 105.5 FM Chicago.
-        </Text>
+        <AppMessage status={this.state.status} />
       </View>
     );
   },

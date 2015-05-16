@@ -7,7 +7,7 @@ let {
 
 export class AudioPlayer {
   static start() {
-    NetInfo.reachabilityIOS.fetch().done( (reach) => {
+    NetInfo.reachabilityIOS.fetch().done((reach) => {
       if (reach !== 'wifi') {
         AlertIOS.alert(
           'Data Usage Rates Apply',

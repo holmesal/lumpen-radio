@@ -11,7 +11,7 @@ Lumpen Radio is here. Almost...
 ## Todo
 
 - [x] Add background playback support
-- [ ] Show progress for initial connection
+- [x] Show progress for initial connection
 - [ ] Allow audio disruption for calls, etc.
 - [ ] Provide on-air off-air user feedback
 - [x] Automatically reconnect if disconnected

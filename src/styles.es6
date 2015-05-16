@@ -1,13 +1,13 @@
-import React from "react-native";
+import React from 'react-native';
 
 let {StyleSheet} = React;
 
 let Styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "white"
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white'
   },
 
   appLogo: {
@@ -21,9 +21,9 @@ let Styles = StyleSheet.create({
 
   appMessage: {
     fontSize: 20,
-    color: "black",
-    fontFamily: "Avenir-Medium",
-    alignSelf: "center",
+    color: 'black',
+    fontFamily: 'Avenir-Medium',
+    alignSelf: 'center',
     opacity: 0.7,
     padding: 5
   },

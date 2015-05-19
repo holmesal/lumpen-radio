@@ -1,6 +1,8 @@
 # WLPN 105.5 FM - Lumpen Radio Chicago
 
-Lumpen Radio is here. Almost...
+The Lumpen Radio App is here. Almost...
+
+![App screenshot.](https://github.com/jhabdas/react-native-es6-reflux/blob/master/screenshot.png)
 
 ## Features
 

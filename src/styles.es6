@@ -1,13 +1,12 @@
 import React from 'react-native';
 
-let {StyleSheet} = React;
+let { StyleSheet } = React;
 
 let Styles = StyleSheet.create({
   appContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white'
   },
 
   appLogo: {
@@ -16,20 +15,23 @@ let Styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     borderRadius: 14,
-    opacity: 0.7
+    opacity: 0.7,
   },
 
   appMessage: {
-    fontSize: 20,
-    color: 'black',
+    fontSize: 48,
+    color: 'white',
     fontFamily: 'Avenir-Medium',
     alignSelf: 'center',
-    opacity: 0.7,
-    padding: 5
+    padding: 5,
   },
 
   appSubMessage: {
-    fontSize: 14,
+    fontSize: 18,
+  },
+
+  connectionMessage: {
+    backgroundColor: '#3b7ec1',
     opacity: 0.7
   },
 

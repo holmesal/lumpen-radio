@@ -5,7 +5,8 @@ Lumpen Radio is here. Almost...
 ## Features
 
 - Streams Lumpen Radio over HTTP
-- Alerts user when not connected to Wi-Fi
+- Shows connection status in app
+- Alerts when not connected to Wi-Fi
 - Plays video loop in background
 
 ## Todo

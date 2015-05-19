@@ -32,16 +32,19 @@ let AppMessage = React.createClass({
   render() {
     let message;
     if (this.state.isConnected) {
-      if (this.props.status === 'PLAYING') {
-        message = 'Now playing commercial-free...'
-      } else {
-        message = 'Tap the above icon to start playing.'
+      switch (this.props.status) {
+        case 'PLAYING':
+          message = 'Now playing commercial-free!'
+          break;
+        default:
+          message = 'Tap above to tune in.'
+          break;
       }
     } else {
       message = 'Connect to the Internet to listen.'
     }
     return (
-      <Text style={[styles.appMessage, styles.appSubMessage]}>{message}</Text>
+      <Text style={[styles.appMessage, styles.appSubMessage, styles.connectionMessage]}>{message}</Text>
     );
   }
 });

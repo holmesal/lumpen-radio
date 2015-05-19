@@ -8,7 +8,7 @@ import styles from '../styles';
 import { AudioPlayer } from '../lib/audio';
 import Video from 'react-native-video';
 
-import AppMessage from './AppMessage'
+import ConnectionStatus from './ConnectionStatus'
 
 let {
   View,
@@ -33,21 +33,11 @@ let App = React.createClass({
   },
 
   componentDidMount() {
-    // Do stuff when the App top-level component is ready,
-    // such as change the color of the iOS status bar:
-    // StatusBarIOS.setStyle(StatusBarIOS.Style.lightContent);
-
     // Get the initial message from the store
-    Actions.updateMessage();
-
+    // Actions.updateMessage();
   },
 
   render() {
-    // Render the top-level element that will contain the complete UI
-    // of your application. You may also choose to use this element
-    // as the single source of data, that is then passed down to
-    // child components.
-
     return (
       <View style={styles.appContainer}>
         <Video source={{uri: 'turntable-loop-1920x500-h264-512kbps-h264'}}
@@ -55,8 +45,7 @@ let App = React.createClass({
           rate={1} // TODO: use this.state.rate etc for the rest
           muted={true}
           resizeMode='cover'
-          repeat={true}
-        />
+          repeat={true} />
 
         <Text style={styles.appMessage}>
           Lumpen Radio
@@ -73,7 +62,7 @@ let App = React.createClass({
           />
         </TouchableOpacity>
 
-        <AppMessage status={this.state.status} />
+        <ConnectionStatus status={this.state.status} />
       </View>
     );
   },

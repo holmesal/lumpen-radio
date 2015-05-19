@@ -19,7 +19,7 @@ let Styles = StyleSheet.create({
   },
 
   appMessage: {
-    fontSize: 48,
+    fontSize: 36,
     color: 'white',
     fontFamily: 'Avenir-Medium',
     alignSelf: 'center',

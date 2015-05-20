@@ -78,7 +78,7 @@ let App = React.createClass({
         this.setState({
           status: 'LOADING'
         });
-        AudioPlayer.start();
+        AudioPlayer.play();
         break;
       case 'LOADING', 'PLAYING':
         this.setState({

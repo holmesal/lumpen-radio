@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Public Media Institute. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "RCTBridgeModule.h"
 #import "STKAudioPlayer.h"
 

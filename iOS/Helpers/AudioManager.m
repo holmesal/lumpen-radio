@@ -10,6 +10,7 @@
 #import "RCTEventDispatcher.h"
 #import "AudioManager.h"
 #import "Constants.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation AudioManager
 
@@ -18,6 +19,11 @@
 static STKAudioPlayer *audioPlayer;
 
 RCT_EXPORT_MODULE();
+
+RCT_EXPORT_METHOD(initialize) {
+  [self setSharedAudioSessionCategory];
+  [self registerAudioInterruptNotifications];
+}
 
 RCT_EXPORT_METHOD(play) {
   if (audioPlayer != nil) {
@@ -86,6 +92,102 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
   } else if (state == STKAudioPlayerStateBuffering) {
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"LOADING"}];
+  }
+}
+
+- (void)setSharedAudioSessionCategory
+{
+  NSError *error;
+  
+  // Create shared session and set audio session category for background playback
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+  
+  if (error) {
+    NSLog(@"Could not initialize AVAudioSession");
+  }
+}
+
+- (void)registerAudioInterruptNotifications
+{
+  // Register for audio interrupt notifications
+  // TODO: don't forget to remove observer in the dealloc method of the same class per http://goo.gl/b8atgI
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(onAudioInterruption:)
+                                               name:AVAudioSessionInterruptionNotification
+                                             object:nil];
+  // Register for route change notifications
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(onRouteChangeInterruption:)
+                                               name:AVAudioSessionRouteChangeNotification
+                                             object:nil];
+}
+
+- (void)onAudioInterruption:(NSNotification *)notification
+{
+  // Get the user info dictionary
+  NSDictionary *interruptionDict = notification.userInfo;
+  
+  // Get the AVAudioSessionInterruptionTypeKey enum from the dictionary
+  NSInteger interuptionType = [[interruptionDict valueForKey:AVAudioSessionInterruptionTypeKey] integerValue];
+  
+  // Decide what to do based on interruption type
+  switch (interuptionType)
+  {
+    case AVAudioSessionInterruptionTypeBegan:
+      NSLog(@"Audio Session Interruption case started.");
+      // fork to handling method here...
+      // EG:[self handleInterruptionStarted];
+      break;
+      
+    case AVAudioSessionInterruptionTypeEnded:
+      NSLog(@"Audio Session Interruption case ended.");
+      // fork to handling method here...
+      // EG:[self handleInterruptionEnded];
+      break;
+      
+    default:
+      NSLog(@"Audio Session Interruption Notification case default.");
+      break;
+  }
+}
+
+- (void)onRouteChangeInterruption:(NSNotification*)notification {
+  
+  NSDictionary *interruptionDict = notification.userInfo;
+  
+  NSInteger routeChangeReason = [[interruptionDict valueForKey:AVAudioSessionRouteChangeReasonKey] integerValue];
+  
+  switch (routeChangeReason) {
+    case AVAudioSessionRouteChangeReasonUnknown:
+      NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonUnknown");
+      break;
+      
+    case AVAudioSessionRouteChangeReasonNewDeviceAvailable:
+      // a headset was added or removed
+      NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonNewDeviceAvailable");
+      break;
+      
+    case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
+      // a headset was added or removed
+      NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonOldDeviceUnavailable");
+      break;
+      
+    case AVAudioSessionRouteChangeReasonCategoryChange:
+      // called at start - also when other audio wants to play
+      NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonCategoryChange"); //AVAudioSessionRouteChangeReasonCategoryChange
+      break;
+      
+    case AVAudioSessionRouteChangeReasonOverride:
+      NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonOverride");
+      break;
+      
+    case AVAudioSessionRouteChangeReasonWakeFromSleep:
+      NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonWakeFromSleep");
+      break;
+      
+    case AVAudioSessionRouteChangeReasonNoSuitableRouteForCategory:
+      NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonNoSuitableRouteForCategory");
+      break;
   }
 }
 

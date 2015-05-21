@@ -17,6 +17,9 @@
 @synthesize bridge = _bridge;
 
 static STKAudioPlayer *audioPlayer;
+static BOOL isPlayingWithOthers;
+
+#pragma mark - RCTBridgeModule
 
 RCT_EXPORT_MODULE();
 
@@ -29,7 +32,7 @@ RCT_EXPORT_METHOD(play) {
   if (audioPlayer != nil) {
     [audioPlayer stop];
   }
-  audioPlayer = [[STKAudioPlayer alloc] init];
+  audioPlayer = [[STKAudioPlayer alloc] init]; // FIXME: Memory leak. Womp womp!
   [audioPlayer setDelegate:self];
   [audioPlayer play:audioStreamUrl];
 }
@@ -66,25 +69,27 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
   }
 }
 
-- (void) audioPlayer:(STKAudioPlayer *)audioPlayer didStartPlayingQueueItemId:(NSObject *)queueItemId {
+#pragma mark - STKAudioPlayer
+
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didStartPlayingQueueItemId:(NSObject *)queueItemId {
   NSLog(@"AudioPlayer is playing");
 }
 
-- (void) audioPlayer:(STKAudioPlayer *)audioPlayer didFinishPlayingQueueItemId:(NSObject *)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration {
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishPlayingQueueItemId:(NSObject *)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration {
   NSLog(@"AudioPlayer has stopped");
   [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
 }
 
-- (void) audioPlayer:(STKAudioPlayer *)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject *)queueItemId {
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject *)queueItemId {
   NSLog(@"AudioPlayer finished buffering");
 }
 
-- (void) audioPlayer:(STKAudioPlayer *)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode {
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode {
   NSLog(@"AudioPlayer unecpected Error with code %d", errorCode);
   [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
 }
 
-- (void) audioPlayer:(STKAudioPlayer *)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState {
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState {
   NSLog(@"AudioPlayer state has changed");
   if (state == STKAudioPlayerStatePlaying) {
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PLAYING"}];
@@ -94,6 +99,8 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"LOADING"}];
   }
 }
+
+#pragma mark - AVAudioSession
 
 - (void)setSharedAudioSessionCategory
 {
@@ -135,14 +142,12 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
   {
     case AVAudioSessionInterruptionTypeBegan:
       NSLog(@"Audio Session Interruption case started.");
-      // fork to handling method here...
-      // EG:[self handleInterruptionStarted];
+      isPlayingWithOthers = [[AVAudioSession sharedInstance] isOtherAudioPlaying];
       break;
       
     case AVAudioSessionInterruptionTypeEnded:
       NSLog(@"Audio Session Interruption case ended.");
-      // fork to handling method here...
-      // EG:[self handleInterruptionEnded];
+      (isPlayingWithOthers) ? [self play] : nil; // TODO: Resume audio for shorter interruptions
       break;
       
     default:

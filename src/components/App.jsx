@@ -59,8 +59,7 @@ let App = React.createClass({
           onPress={Actions.updateMessage, this._onLogoClick}>
           <Image
             style={styles.appLogo}
-            source={require('image!RadioIcon')}
-          />
+            source={require('image!RadioIcon')} />
         </TouchableOpacity>
 
         <ConnectionStatus status={this.state.status} />

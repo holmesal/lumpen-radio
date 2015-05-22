@@ -21,8 +21,13 @@ static BOOL isPlayingWithOthers;
 
 - (AudioManager *)init {
   [self setSharedAudioSessionCategory];
-  [self registerAudioInterruptNotifications];
+  [self registerAudioInterruptionNotifications];
   return self;
+}
+
+- (void)dealloc
+{
+  [self unregisterAudioInterruptionNotifications];
 }
 
 #pragma mark - RCTBridgeModule
@@ -115,10 +120,9 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
   }
 }
 
-- (void)registerAudioInterruptNotifications
+- (void)registerAudioInterruptionNotifications
 {
   // Register for audio interrupt notifications
-  // TODO: don't forget to remove observer in the dealloc method of the same class per http://goo.gl/b8atgI
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(onAudioInterruption:)
                                                name:AVAudioSessionInterruptionNotification
@@ -128,6 +132,12 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
                                            selector:@selector(onRouteChangeInterruption:)
                                                name:AVAudioSessionRouteChangeNotification
                                              object:nil];
+}
+
+- (void)unregisterAudioInterruptionNotifications
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionRouteChangeNotification object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionInterruptionNotification object:nil];
 }
 
 - (void)onAudioInterruption:(NSNotification *)notification

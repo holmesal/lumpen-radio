@@ -16,7 +16,7 @@ The Lumpen Radio App is here. Almost...
 - [x] Add background playback support
 - [x] Show progress for initial connection
 - [ ] Indicate progress for long-running ops
-- [ ] Allow audio disruption for calls, etc.
+- [x] Allow audio disruption for calls, etc.
 - [ ] Provide on-air off-air user feedback
 - [x] Automatically reconnect if disconnected
 - [ ] Icon long-press resets HTTP connection

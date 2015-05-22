@@ -142,12 +142,13 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
   {
     case AVAudioSessionInterruptionTypeBegan:
       NSLog(@"Audio Session Interruption case started.");
-      isPlayingWithOthers = [[AVAudioSession sharedInstance] isOtherAudioPlaying];
+      [self pause];
       break;
       
     case AVAudioSessionInterruptionTypeEnded:
       NSLog(@"Audio Session Interruption case ended.");
-      (isPlayingWithOthers) ? [self play] : nil; // TODO: Resume audio for shorter interruptions
+      isPlayingWithOthers = [[AVAudioSession sharedInstance] isOtherAudioPlaying];
+      (isPlayingWithOthers) ? [self stop] : [self resume]; // TODO: Restart stream for longer interruptions (e.g. phone call)
       break;
       
     default:

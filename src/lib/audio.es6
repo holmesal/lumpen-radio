@@ -6,9 +6,6 @@ let {
 } = React;
 
 export class AudioPlayer {
-  static initialize() {
-    AudioManager.initialize()
-  }
   static start() {
     NetInfo.reachabilityIOS.fetch().done((reach) => {
       if (reach !== 'wifi') {

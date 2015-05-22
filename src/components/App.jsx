@@ -35,7 +35,6 @@ let App = React.createClass({
   componentDidMount() {
     // Get the initial message from the store
     // Actions.updateMessage();
-    AudioPlayer.initialize();
   },
 
   render() {

@@ -19,20 +19,21 @@
 static STKAudioPlayer *audioPlayer;
 static BOOL isPlayingWithOthers;
 
+- (AudioManager *)init {
+  [self setSharedAudioSessionCategory];
+  [self registerAudioInterruptNotifications];
+  return self;
+}
+
 #pragma mark - RCTBridgeModule
 
 RCT_EXPORT_MODULE();
-
-RCT_EXPORT_METHOD(initialize) {
-  [self setSharedAudioSessionCategory];
-  [self registerAudioInterruptNotifications];
-}
 
 RCT_EXPORT_METHOD(play) {
   if (audioPlayer != nil) {
     [audioPlayer stop];
   }
-  audioPlayer = [[STKAudioPlayer alloc] init]; // FIXME: Memory leak. Womp womp!
+  audioPlayer = [[STKAudioPlayer alloc] init];
   [audioPlayer setDelegate:self];
   [audioPlayer play:audioStreamUrl];
 }

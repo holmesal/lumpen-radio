@@ -186,7 +186,7 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
       
     case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
       // a headset was added or removed
-      NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonOldDeviceUnavailable");
+      [self stop];
       break;
       
     case AVAudioSessionRouteChangeReasonCategoryChange:

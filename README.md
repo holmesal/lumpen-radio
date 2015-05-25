@@ -1,6 +1,6 @@
 # WLPN 105.5 FM - Lumpen Radio Chicago
 
-The Lumpen Radio App is here. Almost...
+The [Lumpen Radio](http://lumpenradio.com) App is here. Almost...
 
 ![App screenshot.](https://github.com/jhabdas/react-native-es6-reflux/blob/master/screenshot.png)
 
@@ -8,8 +8,9 @@ The Lumpen Radio App is here. Almost...
 
 - Streams Lumpen Radio over HTTP
 - Shows connection status in app
-- Alerts when not connected to Wi-Fi
 - Plays video loop in background
+- Resumes playback after interruption
+- Stops playback when headset unplugged
 
 ## Todo
 
@@ -32,5 +33,7 @@ The Lumpen Radio App is here. Almost...
     ```
 
 3. Run `npm start` to start the Webpack watcher and the React Packager.
+
    **Note:** The Webpack watcher builds the `index.ios.js` file expected by React Native.
+
 4. Open `ReactNativeEs6Reflux.xcodeproj` in XCode and run the project.

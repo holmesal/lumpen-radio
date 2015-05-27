@@ -9,6 +9,7 @@ import { AudioPlayer } from '../lib/audio';
 import Video from 'react-native-video';
 
 import ConnectionStatus from './ConnectionStatus'
+import Background from './Background'
 
 let {
   View,
@@ -40,12 +41,8 @@ let App = React.createClass({
   render() {
     return (
       <View style={styles.appContainer}>
-        <Video source={{uri: 'turntable-loop-1920x500-h264-512kbps-h264'}}
-          style={styles.backgroundVideo}
-          rate={1} // TODO: use this.state.rate etc for the rest
-          muted={true}
-          resizeMode='cover'
-          repeat={true} />
+
+        <Background status={this.state.status} />
 
         <Text style={styles.appMessage}>
           Lumpen Radio

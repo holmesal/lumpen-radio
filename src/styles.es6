@@ -1,6 +1,9 @@
 import React from 'react-native';
 
-let { StyleSheet } = React;
+let {
+  StyleSheet,
+  Image
+} = React;
 
 let Styles = StyleSheet.create({
   appContainer: {
@@ -41,6 +44,15 @@ let Styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
+  },
+
+  backgroundStill: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    resizeMode: Image.resizeMode.cover
   }
 });
 

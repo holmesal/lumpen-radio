@@ -1,15 +1,12 @@
 import React from 'react-native';
 
-let {
-  StyleSheet,
-  Image
-} = React;
+let { StyleSheet } = React;
 
-let Styles = StyleSheet.create({
+export default StyleSheet.create({
   appContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 
   appLogo: {
@@ -18,7 +15,7 @@ let Styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     borderRadius: 14,
-    opacity: 0.7,
+    opacity: 0.7
   },
 
   appMessage: {
@@ -26,11 +23,11 @@ let Styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Avenir-Medium',
     alignSelf: 'center',
-    padding: 5,
+    padding: 5
   },
 
   appSubMessage: {
-    fontSize: 18,
+    fontSize: 18
   },
 
   connectionMessage: {
@@ -43,17 +40,7 @@ let Styles = StyleSheet.create({
     top: 0,
     left: 0,
     bottom: 0,
-    right: 0,
-  },
-
-  backgroundStill: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    resizeMode: Image.resizeMode.cover
+    right: 0
   }
-});
 
-export default Styles;
+});

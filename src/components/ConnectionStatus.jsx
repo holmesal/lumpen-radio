@@ -7,7 +7,7 @@ let {
   Text
 } = React;
 
-let AppMessage = React.createClass({
+export default React.createClass({
   getInitialState() {
     return { isConnected: null };
   },
@@ -48,5 +48,3 @@ let AppMessage = React.createClass({
     );
   }
 });
-
-export default AppMessage;

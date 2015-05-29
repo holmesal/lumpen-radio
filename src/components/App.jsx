@@ -20,22 +20,22 @@ let {
   DeviceEventEmitter
 } = React;
 
-let App = React.createClass({
+export default React.createClass({
   mixins: [Reflux.connect(Messages, 'message')],
 
   getInitialState() {
-    this.subscription = DeviceEventEmitter.addListener(
-      'AudioBridgeEvent', (evt) => this.setState(evt)
-    );
-    AudioPlayer.getStatus((error, status) => {
-      (error) ? console.log(error) : this.setState(status)
-    });
     return { status: 'STOPPED' };
   },
 
   componentDidMount() {
     // Get the initial message from the store
     // Actions.updateMessage();
+    this.subscription = DeviceEventEmitter.addListener(
+      'AudioBridgeEvent', (evt) => this.setState(evt)
+    );
+    AudioPlayer.getStatus((error, status) => {
+      (error) ? console.log(error) : this.setState(status)
+    });
   },
 
   render() {
@@ -68,7 +68,7 @@ let App = React.createClass({
   },
 
   _onLogoClick() {
-    Actions.updateMessage();
+    // Actions.updateMessage();
     switch (this.state.status) {
       case 'STOPPED':
         this.setState({
@@ -91,5 +91,3 @@ let App = React.createClass({
     }
   }
 });
-
-export default App;

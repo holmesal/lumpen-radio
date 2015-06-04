@@ -45,7 +45,7 @@ export default React.createClass({
         <Background status={this.state.status} />
 
         <Text style={styles.appMessage}>
-          Lumpen Radio
+          LUMPEN RADIO
         </Text>
         <Text style={[styles.appMessage, styles.appSubMessage]}>
           WLPN 105.5 FM Chicago

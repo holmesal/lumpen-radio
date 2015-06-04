@@ -1,10 +1,4 @@
-//
 //  AppDelegate.m
-//  ReactNativeEs6Reflux
-//
-//  Created by Josh Habdas on 5/09/15.
-//  Copyright (c) 2015 Public Media Institute. All rights reserved.
-//
 
 #import "AppDelegate.h"
 #import "RCTRootView.h"
@@ -32,12 +26,12 @@
   // $ curl 'http://localhost:8081/index.ios.bundle?dev=false&minify=true' -o iOS/main.jsbundle
   //
   // and uncomment the next following line
-  // jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+//   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"ReactNativeEs6Reflux"
                                                    launchOptions:launchOptions];
-
+  
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [[UIViewController alloc] init];
   rootViewController.view = rootView;

@@ -3,4 +3,4 @@ import App from './components/App';
 
 let { AppRegistry } = React;
 
-AppRegistry.registerComponent('ReactNativeEs6Reflux', () => App);
+AppRegistry.registerComponent('LUMPEN.FM', () => App);

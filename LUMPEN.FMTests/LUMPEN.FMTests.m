@@ -15,13 +15,13 @@
 #import "RCTRootView.h"
 
 #define TIMEOUT_SECONDS 240
-#define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
+#define TEXT_TO_LOOK_FOR @"Welcome to LUMPEN.FM!"
 
-@interface ReactNativeEs6RefluxTests : XCTestCase
+@interface LumpenFmTests : XCTestCase
 
 @end
 
-@implementation ReactNativeEs6RefluxTests
+@implementation LumpenFmTests
 
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test

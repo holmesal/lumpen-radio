@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "ReactNativeEs6Reflux.app"
-               BlueprintName = "ReactNativeEs6Reflux"
-               ReferencedContainer = "container:ReactNativeEs6Reflux.xcodeproj">
+               BuildableName = "LUMPEN.FM.app"
+               BlueprintName = "LUMPEN.FM"
+               ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "ReactNativeEs6RefluxTests.xctest"
-               BlueprintName = "ReactNativeEs6RefluxTests"
-               ReferencedContainer = "container:ReactNativeEs6Reflux.xcodeproj">
+               BuildableName = "LUMPEN.FMTests.xctest"
+               BlueprintName = "LUMPEN.FMTests"
+               ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "ReactNativeEs6RefluxTests.xctest"
-               BlueprintName = "ReactNativeEs6RefluxTests"
-               ReferencedContainer = "container:ReactNativeEs6Reflux.xcodeproj">
+               BuildableName = "LUMPEN.FMTests.xctest"
+               BlueprintName = "LUMPEN.FMTests"
+               ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ReactNativeEs6Reflux.app"
-            BlueprintName = "ReactNativeEs6Reflux"
-            ReferencedContainer = "container:ReactNativeEs6Reflux.xcodeproj">
+            BuildableName = "LUMPEN.FM.app"
+            BlueprintName = "LUMPEN.FM"
+            ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ReactNativeEs6Reflux.app"
-            BlueprintName = "ReactNativeEs6Reflux"
-            ReferencedContainer = "container:ReactNativeEs6Reflux.xcodeproj">
+            BuildableName = "LUMPEN.FM.app"
+            BlueprintName = "LUMPEN.FM"
+            ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ReactNativeEs6Reflux.app"
-            BlueprintName = "ReactNativeEs6Reflux"
-            ReferencedContainer = "container:ReactNativeEs6Reflux.xcodeproj">
+            BuildableName = "LUMPEN.FM.app"
+            BlueprintName = "LUMPEN.FM"
+            ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

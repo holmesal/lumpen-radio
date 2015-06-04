@@ -2,7 +2,7 @@
 
 The [Lumpen Radio](http://lumpenradio.com) App is here. Almost...
 
-![App screenshot.](https://github.com/jhabdas/react-native-es6-reflux/blob/master/screenshot.png)
+![App screenshot](https://github.com/jhabdas/lumpen-radio/blob/master/screenshot.png)
 
 ## Features
 
@@ -29,11 +29,14 @@ The [Lumpen Radio](http://lumpenradio.com) App is here. Almost...
 2. Install dependencies:
 
     ```sh
+    pod install
     npm install
     ```
 
-3. Run `npm start` to start the Webpack watcher and the React Packager.
+If you run into problems with the Pod installation please review [CocoaPods Troubleshooting](https://guides.cocoapods.org/using/troubleshooting.html) and pay special attetion to any error messages received during the Pod installation.
+
+3. Run `npm start` to start the Webpack watcher and the React Packager in a single shot.
 
    **Note:** The Webpack watcher builds the `index.ios.js` file expected by React Native.
 
-4. Open `ReactNativeEs6Reflux.xcodeproj` in XCode and run the project.
+4. Open `LUMPEN.FM.xcworkspace` in XCode and run the project.

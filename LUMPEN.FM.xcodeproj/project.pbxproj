@@ -15,7 +15,7 @@
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
-		00E356F31AD99517003FC87E /* ReactNativeEs6RefluxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ReactNativeEs6RefluxTests.m */; };
+		00E356F31AD99517003FC87E /* LUMPEN.FMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LUMPEN.FMTests.m */; };
 		0BC1CA72532579F9E2CCB620 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16163A4DE2078135E9435029 /* libPods.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
@@ -85,7 +85,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = ReactNativeEs6Reflux;
+			remoteInfo = LUMPEN.FM;
 		};
 		146834031AC3E56700842450 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -126,10 +126,10 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* ReactNativeEs6RefluxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactNativeEs6RefluxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* LUMPEN.FMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LUMPEN.FMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* ReactNativeEs6RefluxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactNativeEs6RefluxTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* ReactNativeEs6Reflux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactNativeEs6Reflux.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F21AD99517003FC87E /* LUMPEN.FMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUMPEN.FMTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* LUMPEN.FM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LUMPEN.FM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = iOS/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = iOS/Info.plist; sourceTree = "<group>"; };
@@ -237,13 +237,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00E356EF1AD99517003FC87E /* ReactNativeEs6RefluxTests */ = {
+		00E356EF1AD99517003FC87E /* LUMPEN.FMTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* ReactNativeEs6RefluxTests.m */,
+				00E356F21AD99517003FC87E /* LUMPEN.FMTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = ReactNativeEs6RefluxTests;
+			path = LUMPEN.FMTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -254,7 +254,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* ReactNativeEs6Reflux */ = {
+		13B07FAE1A68108700A75B9A /* LUMPEN.FM */ = {
 			isa = PBXGroup;
 			children = (
 				DDB119A31B200B1200589B94 /* Classes */,
@@ -266,7 +266,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = ReactNativeEs6Reflux;
+			name = LUMPEN.FM;
 			sourceTree = "<group>";
 		};
 		146834001AC3E56700842450 /* Products */ = {
@@ -332,9 +332,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* ReactNativeEs6Reflux */,
+				13B07FAE1A68108700A75B9A /* LUMPEN.FM */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* ReactNativeEs6RefluxTests */,
+				00E356EF1AD99517003FC87E /* LUMPEN.FMTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				6F0606FA8C62EE74A598B2DE /* Pods */,
 				7BC1E3E98E014CD4DA009A1D /* Frameworks */,
@@ -346,8 +346,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* ReactNativeEs6Reflux.app */,
-				00E356EE1AD99517003FC87E /* ReactNativeEs6RefluxTests.xctest */,
+				13B07F961A680F5B00A75B9A /* LUMPEN.FM.app */,
+				00E356EE1AD99517003FC87E /* LUMPEN.FMTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -383,9 +383,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* ReactNativeEs6RefluxTests */ = {
+		00E356ED1AD99517003FC87E /* LUMPEN.FMTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ReactNativeEs6RefluxTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "LUMPEN.FMTests" */;
 			buildPhases = (
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
@@ -396,14 +396,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = ReactNativeEs6RefluxTests;
-			productName = ReactNativeEs6RefluxTests;
-			productReference = 00E356EE1AD99517003FC87E /* ReactNativeEs6RefluxTests.xctest */;
+			name = LUMPEN.FMTests;
+			productName = LUMPEN.FMTests;
+			productReference = 00E356EE1AD99517003FC87E /* LUMPEN.FMTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* ReactNativeEs6Reflux */ = {
+		13B07F861A680F5B00A75B9A /* LUMPEN.FM */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ReactNativeEs6Reflux" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "LUMPEN.FM" */;
 			buildPhases = (
 				C047BA584CF9BC94F21DEB82 /* Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -415,9 +415,9 @@
 			);
 			dependencies = (
 			);
-			name = ReactNativeEs6Reflux;
+			name = LUMPEN.FM;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* ReactNativeEs6Reflux.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* LUMPEN.FM.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -427,7 +427,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = Facebook;
+				ORGANIZATIONNAME = "Public Media Institute";
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -443,7 +443,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ReactNativeEs6Reflux" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "LUMPEN.FM" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -502,8 +502,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* ReactNativeEs6Reflux */,
-				00E356ED1AD99517003FC87E /* ReactNativeEs6RefluxTests */,
+				13B07F861A680F5B00A75B9A /* LUMPEN.FM */,
+				00E356ED1AD99517003FC87E /* LUMPEN.FMTests */,
 			);
 		};
 /* End PBXProject section */
@@ -648,7 +648,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* ReactNativeEs6RefluxTests.m in Sources */,
+				00E356F31AD99517003FC87E /* LUMPEN.FMTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,7 +667,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* ReactNativeEs6Reflux */;
+			target = 13B07F861A680F5B00A75B9A /* LUMPEN.FM */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -697,11 +697,11 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ReactNativeEs6RefluxTests/Info.plist;
+				INFOPLIST_FILE = LUMPEN.FMTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReactNativeEs6Reflux.app/ReactNativeEs6Reflux";
+				PRODUCT_NAME = LUMPEN.FMTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LUMPEN.FM.app/LUMPEN.FM";
 			};
 			name = Debug;
 		};
@@ -714,11 +714,11 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ReactNativeEs6RefluxTests/Info.plist;
+				INFOPLIST_FILE = LUMPEN.FMTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReactNativeEs6Reflux.app/ReactNativeEs6Reflux";
+				PRODUCT_NAME = LUMPEN.FMTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LUMPEN.FM.app/LUMPEN.FM";
 			};
 			name = Release;
 		};
@@ -741,9 +741,10 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
-				PRODUCT_NAME = ReactNativeEs6Reflux;
+				OTHER_LIBTOOLFLAGS = "$(inherited)";
+				PRODUCT_NAME = LUMPEN.FM;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -766,9 +767,10 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
-				PRODUCT_NAME = ReactNativeEs6Reflux;
+				OTHER_LIBTOOLFLAGS = "$(inherited)";
+				PRODUCT_NAME = LUMPEN.FM;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -814,6 +816,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -853,6 +856,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -861,7 +865,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ReactNativeEs6RefluxTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "LUMPEN.FMTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -870,7 +874,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ReactNativeEs6Reflux" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "LUMPEN.FM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -879,7 +883,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ReactNativeEs6Reflux" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "LUMPEN.FM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

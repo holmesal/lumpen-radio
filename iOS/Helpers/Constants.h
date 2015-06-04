@@ -10,5 +10,6 @@
 #define ReactNativeEs6Reflux_Constants_h
 
 static NSString * const audioStreamUrl = @"http://50.7.99.155:7416/;stream/1";
+//static NSString * const audioStreamUrl = @"http://stream.lumpen.fm:7416/;stream/1";
 
 #endif

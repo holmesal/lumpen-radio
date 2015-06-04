@@ -15,7 +15,9 @@ export default StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     borderRadius: 14,
-    opacity: 0.7
+    backgroundColor: 'white',
+    opacity: 0.7,
+    resizeMode: 'stretch'
   },
 
   appMessage: {

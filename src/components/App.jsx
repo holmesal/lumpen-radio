@@ -1,3 +1,4 @@
+import tweenState from 'react-tween-state';
 import React from 'react-native';
 import Reflux from 'reflux';
 
@@ -21,7 +22,7 @@ let {
 } = React;
 
 export default React.createClass({
-  mixins: [Reflux.connect(Messages, 'message')],
+  mixins: [Reflux.connect(Messages, 'message'), tweenState.Mixin],
 
   getInitialState() {
     return { status: 'STOPPED' };
@@ -36,9 +37,15 @@ export default React.createClass({
     AudioPlayer.getStatus((error, status) => {
       (error) ? console.log(error) : this.setState(status)
     });
+    this.tweenState('opacity', {
+      beginValue: 0,
+      endValue: 1,
+      duration: 1000
+    });
   },
 
   render() {
+    let transitionStyle = {opacity: this.getTweeningValue('opacity')};
     return (
       <View style={styles.appContainer}>
 
@@ -52,13 +59,15 @@ export default React.createClass({
         </Text>
 
         <TouchableOpacity
-          onPress={Actions.updateMessage, this._onLogoClick}>
+          onPress={Actions.updateMessage, this._onPressLogo}>
           <Image
             style={styles.appLogo}
             source={require('image!RadioButton')} />
         </TouchableOpacity>
 
-        <ConnectionStatus status={this.state.status} />
+        <View style={transitionStyle}>
+          <ConnectionStatus status={this.state.status} />
+        </View>
       </View>
     );
   },
@@ -67,7 +76,7 @@ export default React.createClass({
     this.subscription.remove();
   },
 
-  _onLogoClick() {
+  _onPressLogo() {
     // Actions.updateMessage();
     switch (this.state.status) {
       case 'STOPPED':

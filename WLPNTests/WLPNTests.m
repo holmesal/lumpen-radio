@@ -15,7 +15,7 @@
 #import "RCTRootView.h"
 
 #define TIMEOUT_SECONDS 240
-#define TEXT_TO_LOOK_FOR @"Welcome to LUMPEN.FM!"
+#define TEXT_TO_LOOK_FOR @"Broadcasting now. Live on the Web. Fresh to your head."
 
 @interface LumpenFmTests : XCTestCase
 

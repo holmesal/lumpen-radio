@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:LUMPEN.FM.xcodeproj">
+      location = "group:/Users/jhabdas/Developer/lumpen-radio/WLPN.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

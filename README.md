@@ -39,4 +39,4 @@ If you run into problems with the Pod installation please review [CocoaPods Trou
 
    **Note:** The Webpack watcher builds the `index.ios.js` file expected by React Native.
 
-4. Open `LUMPEN.FM.xcworkspace` in XCode and run the project.
+4. Open `WLPN.xcworkspace` in XCode and run the project.

@@ -4,4 +4,4 @@ platform :ios, '7.0'
 
 pod 'StreamingKit', '~> 0.1'
 
-link_with 'LUMPEN.FM'
+link_with 'WLPN'

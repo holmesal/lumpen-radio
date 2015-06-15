@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "LUMPEN.FM.app"
-               BlueprintName = "LUMPEN.FM"
-               ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
+               BuildableName = "WLPN.app"
+               BlueprintName = "WLPN"
+               ReferencedContainer = "container:WLPN.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "LUMPEN.FMTests.xctest"
-               BlueprintName = "LUMPEN.FMTests"
-               ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
+               BuildableName = "WLPNTests.xctest"
+               BlueprintName = "WLPNTests"
+               ReferencedContainer = "container:WLPN.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "LUMPEN.FMTests.xctest"
-               BlueprintName = "LUMPEN.FMTests"
-               ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
+               BuildableName = "WLPNTests.xctest"
+               BlueprintName = "WLPNTests"
+               ReferencedContainer = "container:WLPN.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "LUMPEN.FM.app"
-            BlueprintName = "LUMPEN.FM"
-            ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
+            BuildableName = "WLPN.app"
+            BlueprintName = "WLPN"
+            ReferencedContainer = "container:WLPN.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "LUMPEN.FM.app"
-            BlueprintName = "LUMPEN.FM"
-            ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
+            BuildableName = "WLPN.app"
+            BlueprintName = "WLPN"
+            ReferencedContainer = "container:WLPN.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "LUMPEN.FM.app"
-            BlueprintName = "LUMPEN.FM"
-            ReferencedContainer = "container:LUMPEN.FM.xcodeproj">
+            BuildableName = "WLPN.app"
+            BlueprintName = "WLPN"
+            ReferencedContainer = "container:WLPN.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

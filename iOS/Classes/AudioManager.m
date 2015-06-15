@@ -32,9 +32,10 @@ RCT_EXPORT_METHOD(play) {
   if (audioPlayer != nil) {
     [audioPlayer stop];
   }
-  audioPlayer = [[STKAudioPlayer alloc] init];
+  audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .readBufferSize = 20 }];
+
   [audioPlayer setDelegate:self];
-  [audioPlayer play:AUDIO_STREAM_URL];
+  [audioPlayer play:LPN_AUDIO_STREAM_URL];
 }
 
 RCT_EXPORT_METHOD(pause) {

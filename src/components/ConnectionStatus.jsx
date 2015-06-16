@@ -34,10 +34,13 @@ export default React.createClass({
     if (this.state.isConnected) {
       switch (this.props.status) {
         case 'PLAYING':
-          message = 'Now playing commercial-free!'
+          message = 'Now playing commercial-free!';
+          break;
+        case 'LOADING':
+          message = 'Buffering... Hang tight.';
           break;
         default:
-          message = 'Tap above to tune in.'
+          message = 'Tap above to tune in.';
           break;
       }
     } else {

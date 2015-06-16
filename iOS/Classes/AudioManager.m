@@ -6,14 +6,21 @@
 #import "Constants.h"
 #import <AVFoundation/AVFoundation.h>
 
+@interface AudioManager()
+{
+  STKAudioPlayer *audioPlayer;
+}
+@end
+
 @implementation AudioManager
 
 @synthesize bridge = _bridge;
 
-static STKAudioPlayer *audioPlayer;
 static BOOL isPlayingWithOthers;
 
 - (AudioManager *)init {
+  audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .readBufferSize = 20 }];
+  [audioPlayer setDelegate:self];
   [self setSharedAudioSessionCategory];
   [self registerAudioInterruptionNotifications];
   return self;
@@ -32,9 +39,6 @@ RCT_EXPORT_METHOD(play) {
   if (audioPlayer != nil) {
     [audioPlayer stop];
   }
-  audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .readBufferSize = 20 }];
-
-  [audioPlayer setDelegate:self];
   [audioPlayer play:LPN_AUDIO_STREAM_URL];
 }
 

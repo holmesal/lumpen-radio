@@ -59,7 +59,8 @@ export default React.createClass({
         </Text>
 
         <TouchableOpacity
-          onPress={Actions.updateMessage, this._onPressLogo}>
+          onPress={Actions.updateMessage, this._onPressLogo}
+          onLongPress={this._onLongPressLogo}>
           <Image
             style={styles.appLogo}
             source={require('image!RadioButton')} />
@@ -74,6 +75,10 @@ export default React.createClass({
 
   componentWillUnmount() {
     this.subscription.remove();
+  },
+
+  _onLongPressLogo() {
+    AudioPlayer.play();
   },
 
   _onPressLogo() {

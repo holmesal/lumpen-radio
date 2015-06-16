@@ -27,6 +27,14 @@ The [Lumpen Radio](http://lumpenradio.com) App is here. Almost...
 - [ ] Long-pauses restart stream
 - [ ] Add now playing meta data
 
+## Known issues
+
+- [ ] Background video delays device wake then turns black. https://github.com/brentvatne/react-native-video/issues/44
+- [ ] Device may run hot looping video in background while screen is on
+- [ ] Audio stream does not automatically restart after some device interruptions (e.g. incoming call sent to voice mail)
+- [ ] Play button does not function when disconnected from the Internet
+- [ ] Launch screen skews on iPad
+
 ## Getting started
 
 1. Clone this project

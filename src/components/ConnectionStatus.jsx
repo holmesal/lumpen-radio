@@ -36,15 +36,22 @@ export default React.createClass({
         case 'PLAYING':
           message = 'Now playing commercial-free!';
           break;
-        case 'LOADING':
+        case 'PAUSED':
+          message = 'Tap above to continue listening.';
+          break;
+        case 'STOPPED':
+          message = 'Tap above to tune in.';
+          break;
+        case 'BUFFERING':
           message = 'Buffering... Hang tight.';
           break;
+        case 'ERROR'
         default:
-          message = 'Tap above to tune in.';
+          message = 'Error. Does not compute.';
           break;
       }
     } else {
-      message = 'Connect to the Internet to listen.'
+      message = 'Connect to the Internet to listen.';
     }
     return (
       <Text style={[styles.appMessage, styles.appSubMessage, styles.connectionMessage]}>{message}</Text>

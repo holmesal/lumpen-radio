@@ -28,6 +28,7 @@
 - (void)dealloc
 {
   [self unregisterAudioInterruptionNotifications];
+  [audioPlayer setDelegate:nil];
 }
 
 
@@ -38,49 +39,70 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(play)
 {
-  if (audioPlayer != nil)
+  if (!audioPlayer)
   {
-    [audioPlayer stop];
+    return;
   }
-  [audioPlayer play:LPN_AUDIO_STREAM_URL];
+  if (audioPlayer.state == STKAudioPlayerStatePaused)
+  {
+    [audioPlayer resume];
+  }
+  else
+  {
+    [audioPlayer play:LPN_AUDIO_STREAM_URL];
+  }
+
 }
 
 RCT_EXPORT_METHOD(pause)
 {
-  if (audioPlayer != nil)
+  if (!audioPlayer)
+  {
+    return;
+  }
+  else
   {
     [audioPlayer pause];
   }
-  [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PAUSED"}];
 }
 
 RCT_EXPORT_METHOD(resume)
 {
-  if (audioPlayer != nil)
+  if (!audioPlayer)
+  {
+    return;
+  }
+  else
   {
     [audioPlayer resume];
   }
-  [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PLAYING"}];
 }
 
 RCT_EXPORT_METHOD(stop)
 {
-  if (audioPlayer != nil)
+  if (!audioPlayer)
+  {
+    return;
+  }
+  else
   {
     [audioPlayer stop];
-    [audioPlayer setDelegate:nil];
   }
-  [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
 }
 
-RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
-  if (audioPlayer == nil)
+RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
+{
+  if (!audioPlayer)
   {
-    callback(@[[NSNull null], @{@"status" : @"STOPPED"}]);
+    callback(@[[NSNull null], @{@"status" : @"ERROR"}]);
   }
   else if ([audioPlayer state] == STKAudioPlayerStatePlaying)
   {
     callback(@[[NSNull null], @{@"status" : @"PLAYING"}]);
+  }
+  else if ([audioPlayer state] == STKAudioPlayerStateBuffering)
+  {
+    callback(@[[NSNull null], @{@"status" : @"BUFFERING"}]);
   }
   else
   {
@@ -100,7 +122,6 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
 - (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishPlayingQueueItemId:(NSObject *)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
 {
   NSLog(@"AudioPlayer has stopped");
-  [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
 }
 
 - (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject *)queueItemId
@@ -110,23 +131,35 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
 
 - (void)audioPlayer:(STKAudioPlayer *)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode {
   NSLog(@"AudioPlayer unecpected Error with code %d", errorCode);
-  [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
 }
 
 - (void)audioPlayer:(STKAudioPlayer *)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
 {
   NSLog(@"AudioPlayer state has changed");
-  if (state == STKAudioPlayerStatePlaying)
+  switch (state)
   {
-    [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PLAYING"}];
-  }
-  else if (state == STKAudioPlayerStateStopped)
-  {
-    [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
-  }
-  else if (state == STKAudioPlayerStateBuffering)
-  {
-    [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"LOADING"}];
+    case STKAudioPlayerStatePlaying:
+      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PLAYING"}];
+      break;
+      
+    case STKAudioPlayerStatePaused:
+      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PAUSED"}];
+      break;
+      
+    case STKAudioPlayerStateStopped:
+      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
+      break;
+      
+    case STKAudioPlayerStateBuffering:
+      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"BUFFERING"}];
+      break;
+      
+    case STKAudioPlayerStateError:
+      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"ERROR"}];
+      break;
+      
+    default:
+      break;
   }
 }
 
@@ -137,10 +170,10 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
 - (void)setSharedAudioSessionCategory
 {
   NSError *error;
-  
+
   // Create shared session and set audio session category for background playback
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-  
+
   if (error)
   {
     NSLog(@"Could not initialize AVAudioSession");
@@ -171,10 +204,10 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
 {
   // Get the user info dictionary
   NSDictionary *interruptionDict = notification.userInfo;
-  
+
   // Get the AVAudioSessionInterruptionTypeKey enum from the dictionary
   NSInteger interuptionType = [[interruptionDict valueForKey:AVAudioSessionInterruptionTypeKey] integerValue];
-  
+
   // Decide what to do based on interruption type
   switch (interuptionType)
   {
@@ -182,13 +215,13 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
       NSLog(@"Audio Session Interruption case started.");
       [audioPlayer pause];
       break;
-      
+
     case AVAudioSessionInterruptionTypeEnded:
       NSLog(@"Audio Session Interruption case ended.");
       isPlayingWithOthers = [[AVAudioSession sharedInstance] isOtherAudioPlaying];
-      (isPlayingWithOthers) ? [audioPlayer stop] : [audioPlayer resume]; // TODO: Restart stream for longer interruptions (e.g. phone call)
+      (isPlayingWithOthers) ? [audioPlayer pause] : [audioPlayer resume];
       break;
-      
+
     default:
       NSLog(@"Audio Session Interruption Notification case default.");
       break;
@@ -197,40 +230,43 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
 
 - (void)onRouteChangeInterruption:(NSNotification*)notification
 {
-  
+
   NSDictionary *interruptionDict = notification.userInfo;
   NSInteger routeChangeReason = [[interruptionDict valueForKey:AVAudioSessionRouteChangeReasonKey] integerValue];
-  
+
   switch (routeChangeReason)
   {
     case AVAudioSessionRouteChangeReasonUnknown:
       NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonUnknown");
       break;
-      
+
     case AVAudioSessionRouteChangeReasonNewDeviceAvailable:
-      // a headset was added or removed
+      // A user action (such as plugging in a headset) has made a preferred audio route available.
       NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonNewDeviceAvailable");
       break;
-      
+
     case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
-      // a headset was added or removed
+      // The previous audio output path is no longer available.
       [audioPlayer stop];
       break;
-      
+
     case AVAudioSessionRouteChangeReasonCategoryChange:
-      // called at start - also when other audio wants to play
+      // The category of the session object changed. Also used when the session is first activated.
       NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonCategoryChange"); //AVAudioSessionRouteChangeReasonCategoryChange
       break;
-      
+
     case AVAudioSessionRouteChangeReasonOverride:
+      // The output route was overridden by the app.
       NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonOverride");
       break;
-      
+
     case AVAudioSessionRouteChangeReasonWakeFromSleep:
+      // The route changed when the device woke up from sleep.
       NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonWakeFromSleep");
       break;
-      
+
     case AVAudioSessionRouteChangeReasonNoSuitableRouteForCategory:
+      // The route changed because no suitable route is now available for the specified category.
       NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonNoSuitableRouteForCategory");
       break;
   }

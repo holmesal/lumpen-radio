@@ -9,6 +9,7 @@
 @interface AudioManager()
 {
   STKAudioPlayer *audioPlayer;
+  BOOL isPlayingWithOthers;
 }
 @end
 
@@ -16,10 +17,8 @@
 
 @synthesize bridge = _bridge;
 
-static BOOL isPlayingWithOthers;
-
 - (AudioManager *)init {
-  audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .readBufferSize = 20 }];
+  audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .readBufferSize = LPN_AUDIO_BUFFER_SEC }];
   [audioPlayer setDelegate:self];
   [self setSharedAudioSessionCategory];
   [self registerAudioInterruptionNotifications];
@@ -31,33 +30,43 @@ static BOOL isPlayingWithOthers;
   [self unregisterAudioInterruptionNotifications];
 }
 
+
 #pragma mark - RCTBridgeModule
+
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(play) {
-  if (audioPlayer != nil) {
+RCT_EXPORT_METHOD(play)
+{
+  if (audioPlayer != nil)
+  {
     [audioPlayer stop];
   }
   [audioPlayer play:LPN_AUDIO_STREAM_URL];
 }
 
-RCT_EXPORT_METHOD(pause) {
-  if (audioPlayer != nil) {
+RCT_EXPORT_METHOD(pause)
+{
+  if (audioPlayer != nil)
+  {
     [audioPlayer pause];
   }
   [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PAUSED"}];
 }
 
-RCT_EXPORT_METHOD(resume) {
-  if (audioPlayer != nil) {
+RCT_EXPORT_METHOD(resume)
+{
+  if (audioPlayer != nil)
+  {
     [audioPlayer resume];
   }
   [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PLAYING"}];
 }
 
-RCT_EXPORT_METHOD(stop) {
-  if (audioPlayer != nil) {
+RCT_EXPORT_METHOD(stop)
+{
+  if (audioPlayer != nil)
+  {
     [audioPlayer stop];
     [audioPlayer setDelegate:nil];
   }
@@ -65,27 +74,37 @@ RCT_EXPORT_METHOD(stop) {
 }
 
 RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
-  if (audioPlayer == nil) {
+  if (audioPlayer == nil)
+  {
     callback(@[[NSNull null], @{@"status" : @"STOPPED"}]);
-  } else if ([audioPlayer state] == STKAudioPlayerStatePlaying) {
+  }
+  else if ([audioPlayer state] == STKAudioPlayerStatePlaying)
+  {
     callback(@[[NSNull null], @{@"status" : @"PLAYING"}]);
-  } else {
+  }
+  else
+  {
     callback(@[[NSNull null], @{@"status" : @"STOPPED"}]);
   }
 }
 
+
 #pragma mark - STKAudioPlayer
 
-- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didStartPlayingQueueItemId:(NSObject *)queueItemId {
+
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didStartPlayingQueueItemId:(NSObject *)queueItemId
+{
   NSLog(@"AudioPlayer is playing");
 }
 
-- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishPlayingQueueItemId:(NSObject *)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration {
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishPlayingQueueItemId:(NSObject *)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
+{
   NSLog(@"AudioPlayer has stopped");
   [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
 }
 
-- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject *)queueItemId {
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject *)queueItemId
+{
   NSLog(@"AudioPlayer finished buffering");
 }
 
@@ -94,18 +113,26 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
   [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
 }
 
-- (void)audioPlayer:(STKAudioPlayer *)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState {
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
+{
   NSLog(@"AudioPlayer state has changed");
-  if (state == STKAudioPlayerStatePlaying) {
+  if (state == STKAudioPlayerStatePlaying)
+  {
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PLAYING"}];
-  } else if (state == STKAudioPlayerStateStopped) {
+  }
+  else if (state == STKAudioPlayerStateStopped)
+  {
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
-  } else if (state == STKAudioPlayerStateBuffering) {
+  }
+  else if (state == STKAudioPlayerStateBuffering)
+  {
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"LOADING"}];
   }
 }
 
+
 #pragma mark - AVAudioSession
+
 
 - (void)setSharedAudioSessionCategory
 {
@@ -114,7 +141,8 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
   // Create shared session and set audio session category for background playback
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
   
-  if (error) {
+  if (error)
+  {
     NSLog(@"Could not initialize AVAudioSession");
   }
 }
@@ -152,13 +180,13 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
   {
     case AVAudioSessionInterruptionTypeBegan:
       NSLog(@"Audio Session Interruption case started.");
-      [self pause];
+      [audioPlayer pause];
       break;
       
     case AVAudioSessionInterruptionTypeEnded:
       NSLog(@"Audio Session Interruption case ended.");
       isPlayingWithOthers = [[AVAudioSession sharedInstance] isOtherAudioPlaying];
-      (isPlayingWithOthers) ? [self stop] : [self resume]; // TODO: Restart stream for longer interruptions (e.g. phone call)
+      (isPlayingWithOthers) ? [audioPlayer stop] : [audioPlayer resume]; // TODO: Restart stream for longer interruptions (e.g. phone call)
       break;
       
     default:
@@ -167,13 +195,14 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
   }
 }
 
-- (void)onRouteChangeInterruption:(NSNotification*)notification {
+- (void)onRouteChangeInterruption:(NSNotification*)notification
+{
   
   NSDictionary *interruptionDict = notification.userInfo;
-  
   NSInteger routeChangeReason = [[interruptionDict valueForKey:AVAudioSessionRouteChangeReasonKey] integerValue];
   
-  switch (routeChangeReason) {
+  switch (routeChangeReason)
+  {
     case AVAudioSessionRouteChangeReasonUnknown:
       NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonUnknown");
       break;
@@ -185,7 +214,7 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback) {
       
     case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
       // a headset was added or removed
-      [self stop];
+      [audioPlayer stop];
       break;
       
     case AVAudioSessionRouteChangeReasonCategoryChange:

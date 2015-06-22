@@ -21,17 +21,17 @@ The [Lumpen Radio](http://lumpenradio.com) App is here. Almost...
 - [x] Show progress for initial connection
 - [x] Indicate progress for long-running ops
 - [x] Allow audio disruption for calls, etc.
-- [ ] Provide on-air off-air user feedback
 - [x] Automatically reconnect if disconnected
 - [x] Icon long-press restarts stream
+- [ ] Support Control Center / Remote Control events (thanks to Wayne Wright for the suggestion)
 - [ ] Long-pauses restart stream
 - [ ] Add now playing meta data
+- [ ] Provide on-air off-air user feedback
 
 ## Known issues
 
 - [ ] Background video delays device wake then turns black. https://github.com/brentvatne/react-native-video/issues/44
-- [ ] Device may run hot looping video in background while screen is on
-- [ ] Audio stream does not automatically restart after some device interruptions (e.g. incoming call sent to voice mail)
+- [x] Audio stream does not automatically restart after some device interruptions (e.g. incoming call sent to voice mail)
 - [ ] Play button does not function when disconnected from the Internet
 - [ ] Launch screen skews on iPad
 

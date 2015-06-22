@@ -22,6 +22,7 @@
   [audioPlayer setDelegate:self];
   [self setSharedAudioSessionCategory];
   [self registerAudioInterruptionNotifications];
+  [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
   return self;
 }
 
@@ -114,26 +115,26 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
 #pragma mark - STKAudioPlayer
 
 
-- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didStartPlayingQueueItemId:(NSObject *)queueItemId
+- (void)audioPlayer:(STKAudioPlayer *)player didStartPlayingQueueItemId:(NSObject *)queueItemId
 {
   NSLog(@"AudioPlayer is playing");
 }
 
-- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishPlayingQueueItemId:(NSObject *)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
+- (void)audioPlayer:(STKAudioPlayer *)player didFinishPlayingQueueItemId:(NSObject *)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
 {
   NSLog(@"AudioPlayer has stopped");
 }
 
-- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject *)queueItemId
+- (void)audioPlayer:(STKAudioPlayer *)player didFinishBufferingSourceWithQueueItemId:(NSObject *)queueItemId
 {
   NSLog(@"AudioPlayer finished buffering");
 }
 
-- (void)audioPlayer:(STKAudioPlayer *)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode {
-  NSLog(@"AudioPlayer unecpected Error with code %d", errorCode);
+- (void)audioPlayer:(STKAudioPlayer *)player unexpectedError:(STKAudioPlayerErrorCode)errorCode {
+  NSLog(@"AudioPlayer unexpected Error with code %d", errorCode);
 }
 
-- (void)audioPlayer:(STKAudioPlayer *)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
+- (void)audioPlayer:(STKAudioPlayer *)player stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
 {
   NSLog(@"AudioPlayer state has changed");
   switch (state)
@@ -141,23 +142,23 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
     case STKAudioPlayerStatePlaying:
       [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PLAYING"}];
       break;
-      
+
     case STKAudioPlayerStatePaused:
       [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PAUSED"}];
       break;
-      
+
     case STKAudioPlayerStateStopped:
       [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
       break;
-      
+
     case STKAudioPlayerStateBuffering:
       [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"BUFFERING"}];
       break;
-      
+
     case STKAudioPlayerStateError:
       [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"ERROR"}];
       break;
-      
+
     default:
       break;
   }
@@ -169,14 +170,14 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
 
 - (void)setSharedAudioSessionCategory
 {
-  NSError *error;
+  NSError *categoryError = nil;
 
-  // Create shared session and set audio session category for background playback
-  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-
-  if (error)
+  // Create shared session and set audio session category allowing background playback
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&categoryError];
+  
+  if (categoryError)
   {
-    NSLog(@"Could not initialize AVAudioSession");
+    NSLog(@"Error setting category! %@", [categoryError description]);
   }
 }
 
@@ -219,7 +220,7 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
     case AVAudioSessionInterruptionTypeEnded:
       NSLog(@"Audio Session Interruption case ended.");
       isPlayingWithOthers = [[AVAudioSession sharedInstance] isOtherAudioPlaying];
-      (isPlayingWithOthers) ? [audioPlayer pause] : [audioPlayer resume];
+      (isPlayingWithOthers) ? [audioPlayer stop] : [audioPlayer resume];
       break;
 
     default:

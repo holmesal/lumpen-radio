@@ -84,13 +84,7 @@ export default React.createClass({
   _onPressLogo() {
     // Actions.updateMessage();
     switch (this.state.status) {
-      case 'STOPPED':
-        this.setState({
-          status: 'LOADING'
-        });
-        AudioPlayer.play();
-        break;
-      case 'LOADING', 'PLAYING':
+      case 'PLAYING':
         this.setState({
           status: 'PAUSED'
         });
@@ -101,6 +95,18 @@ export default React.createClass({
           status: 'PLAYING'
         });
         AudioPlayer.resume();
+        break;
+      case 'STOPPED':
+        this.setState({
+          status: 'BUFFERING'
+        });
+        AudioPlayer.play();
+        break;
+      case 'BUFFERING':
+        this.setState({
+          status: 'STOPPED'
+        });
+        AudioPlayer.stop();
         break;
     }
   }

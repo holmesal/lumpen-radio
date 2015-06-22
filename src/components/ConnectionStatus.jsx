@@ -45,9 +45,9 @@ export default React.createClass({
         case 'BUFFERING':
           message = 'Buffering... Hang tight.';
           break;
-        case 'ERROR'
+        case 'ERROR':
         default:
-          message = 'Error. Does not compute.';
+          message = 'Long-press above to restart stream.';
           break;
       }
     } else {

@@ -8,12 +8,13 @@ The [Lumpen Radio](http://lumpenradio.com) App is here. Almost...
 
 - Streams Lumpen Radio over HTTP
 - Pressing button starts/pauses stream
-- Button long-press restarts the stream
+- Button long-press restarts stream
 - Shows connection status in app
 - Indicates when stream is buffering
 - Resumes playback after interruption
 - Stops playback when headset unplugged
 - Plays video loop in background
+- 20s buffer to help support poor connections
 
 ## Todo
 

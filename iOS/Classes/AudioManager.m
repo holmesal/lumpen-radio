@@ -17,12 +17,12 @@
 
 @synthesize bridge = _bridge;
 
-- (AudioManager *)init {
+- (AudioManager *)init
+{
   audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .readBufferSize = LPN_AUDIO_BUFFER_SEC }];
   [audioPlayer setDelegate:self];
   [self setSharedAudioSessionCategory];
   [self registerAudioInterruptionNotifications];
-  [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
   return self;
 }
 

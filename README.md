@@ -10,6 +10,7 @@ The [Lumpen Radio](http://lumpenradio.com) App is here. Almost...
 - Pressing button starts/pauses stream
 - Button long-press restarts stream
 - Shows connection status in app
+- Provides instruction for error cases
 - Indicates when stream is buffering
 - Resumes playback after interruption
 - Stops playback when headset unplugged

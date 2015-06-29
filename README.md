@@ -27,15 +27,16 @@ The [Lumpen Radio](http://lumpenradio.com) App is here. Almost...
 - [x] Icon long-press restarts stream
 - [ ] Support Control Center / Remote Control events (thanks to Wayne Wright for the suggestion)
 - [ ] Long-pauses restart stream
-- [ ] Add now playing meta data
+- [ ] Add now playing metadata (if available)
 - [ ] Provide on-air off-air user feedback
 
 ## Known issues
 
-- [ ] Background video delays device wake then turns black. https://github.com/brentvatne/react-native-video/issues/44
+- [x] [Background video delays device wake then turns black](https://github.com/brentvatne/react-native-video/issues/44).
 - [x] Audio stream does not automatically restart after some device interruptions (e.g. incoming call sent to voice mail)
+- [ ] Audio buffer out after 20 seconds of interrupted call time followed by 20 seconds of play
 - [ ] Play button does not function when disconnected from the Internet
-- [ ] Launch screen skews on iPad
+- [x] Launch screen skews on iPad
 
 ## Getting started
 

@@ -6,7 +6,8 @@ export default StyleSheet.create({
   appContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'transparent'
   },
 
   appLogo: {
@@ -23,6 +24,7 @@ export default StyleSheet.create({
   appMessage: {
     fontSize: 36,
     color: 'white',
+    backgroundColor: 'transparent',
     fontFamily: 'Avenir-Medium',
     alignSelf: 'center',
     padding: 5
@@ -34,7 +36,8 @@ export default StyleSheet.create({
 
   connectionMessage: {
     backgroundColor: '#3b7ec1',
-    opacity: 0.7
+    opacity: 0.7,
+    padding: 5
   },
 
   backgroundVideo: {

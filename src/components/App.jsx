@@ -7,7 +7,6 @@ import Messages from '../stores/messages';
 import styles from '../styles';
 
 import { AudioPlayer } from '../lib/audio';
-import Video from 'react-native-video';
 
 import ConnectionStatus from './ConnectionStatus'
 import Background from './Background'

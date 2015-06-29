@@ -19,6 +19,7 @@
 
 - (AudioManager *)init
 {
+  self = [super init];
   audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .readBufferSize = LPN_AUDIO_BUFFER_SEC }];
   [audioPlayer setDelegate:self];
   [self setSharedAudioSessionCategory];
@@ -33,23 +34,19 @@
 }
 
 
-#pragma mark - RCTBridgeModule
+#pragma mark - Pubic API
 
 
 RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(play)
 {
-  if (!audioPlayer)
-  {
+  if (!audioPlayer) {
     return;
   }
-  if (audioPlayer.state == STKAudioPlayerStatePaused)
-  {
+  if (audioPlayer.state == STKAudioPlayerStatePaused) {
     [audioPlayer resume];
-  }
-  else
-  {
+  } else {
     [audioPlayer play:LPN_AUDIO_STREAM_URL];
   }
 
@@ -57,62 +54,46 @@ RCT_EXPORT_METHOD(play)
 
 RCT_EXPORT_METHOD(pause)
 {
-  if (!audioPlayer)
-  {
+  if (!audioPlayer) {
     return;
-  }
-  else
-  {
+  } else {
     [audioPlayer pause];
   }
 }
 
 RCT_EXPORT_METHOD(resume)
 {
-  if (!audioPlayer)
-  {
+  if (!audioPlayer) {
     return;
-  }
-  else
-  {
+  } else {
     [audioPlayer resume];
   }
 }
 
 RCT_EXPORT_METHOD(stop)
 {
-  if (!audioPlayer)
-  {
+  if (!audioPlayer) {
     return;
-  }
-  else
-  {
+  } else {
     [audioPlayer stop];
   }
 }
 
 RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
 {
-  if (!audioPlayer)
-  {
-    callback(@[[NSNull null], @{@"status" : @"ERROR"}]);
-  }
-  else if ([audioPlayer state] == STKAudioPlayerStatePlaying)
-  {
-    callback(@[[NSNull null], @{@"status" : @"PLAYING"}]);
-  }
-  else if ([audioPlayer state] == STKAudioPlayerStateBuffering)
-  {
-    callback(@[[NSNull null], @{@"status" : @"BUFFERING"}]);
-  }
-  else
-  {
-    callback(@[[NSNull null], @{@"status" : @"STOPPED"}]);
+  if (!audioPlayer) {
+    callback(@[[NSNull null], @{@"status": @"ERROR"}]);
+  } else if ([audioPlayer state] == STKAudioPlayerStatePlaying) {
+    callback(@[[NSNull null], @{@"status": @"PLAYING"}]);
+  } else if ([audioPlayer state] == STKAudioPlayerStateBuffering) {
+    callback(@[[NSNull null], @{@"status": @"BUFFERING"}]);
+  } else {
+    callback(@[[NSNull null], @{@"status": @"STOPPED"}]);
   }
 }
 
 
-#pragma mark - STKAudioPlayer
+#pragma mark - StreamingKit Audio Player
 
 
 - (void)audioPlayer:(STKAudioPlayer *)player didStartPlayingQueueItemId:(NSObject *)queueItemId
@@ -137,26 +118,30 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
 - (void)audioPlayer:(STKAudioPlayer *)player stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
 {
   NSLog(@"AudioPlayer state has changed");
-  switch (state)
-  {
+  switch (state) {
     case STKAudioPlayerStatePlaying:
-      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PLAYING"}];
+      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent"
+                                                      body:@{@"status": @"PLAYING"}];
       break;
 
     case STKAudioPlayerStatePaused:
-      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"PAUSED"}];
+      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent"
+                                                      body:@{@"status": @"PAUSED"}];
       break;
 
     case STKAudioPlayerStateStopped:
-      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"STOPPED"}];
+      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent"
+                                                      body:@{@"status": @"STOPPED"}];
       break;
 
     case STKAudioPlayerStateBuffering:
-      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"BUFFERING"}];
+      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent"
+                                                      body:@{@"status": @"BUFFERING"}];
       break;
 
     case STKAudioPlayerStateError:
-      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent" body:@{@"status" : @"ERROR"}];
+      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent"
+                                                      body:@{@"status": @"ERROR"}];
       break;
 
     default:
@@ -165,7 +150,7 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
 }
 
 
-#pragma mark - AVAudioSession
+#pragma mark - Audio Session Methods
 
 
 - (void)setSharedAudioSessionCategory
@@ -175,8 +160,7 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
   // Create shared session and set audio session category allowing background playback
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&categoryError];
   
-  if (categoryError)
-  {
+  if (categoryError) {
     NSLog(@"Error setting category! %@", [categoryError description]);
   }
 }
@@ -197,8 +181,12 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
 
 - (void)unregisterAudioInterruptionNotifications
 {
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionRouteChangeNotification object:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionInterruptionNotification object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                  name:AVAudioSessionRouteChangeNotification
+                                                object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                  name:AVAudioSessionInterruptionNotification
+                                                object:nil];
 }
 
 - (void)onAudioInterruption:(NSNotification *)notification

@@ -1,13 +1,13 @@
 {
-  "name": "lumpen-fm",
-  "version": "0.0.1",
+  "name": "lumpen-radio",
+  "version": "1.0.0-rc.2",
   "private": true,
   "scripts": {
     "start": "node webpack-watch & node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
-    "react-native": "^0.4.2",
-    "react-native-video": "^0.3.6",
+    "react-native": "^0.6.0",
+    "react-native-video": "^0.4.9",
     "react-tween-state": "0.0.5",
     "reflux": "^0.2.7"
   },

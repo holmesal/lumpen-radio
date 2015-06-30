@@ -141,10 +141,10 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		DD1EC6B21B41DE36002B4339 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		DD1EC6B81B41DFDE002B4339 /* LaunchScreen~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "LaunchScreen~ipad.xib"; path = "iOS/LaunchScreen~ipad.xib"; sourceTree = "<group>"; };
+		DD1EC6B81B41DFDE002B4339 /* LaunchScreen~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "LaunchScreen~ipad.xib"; path = "iOS/Resources/LaunchScreen~ipad.xib"; sourceTree = "<group>"; };
 		DD3B4C341AFDC76C00BCD40D /* libPods-StreamingKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-StreamingKit.a"; path = "Pods/../build/Debug-iphoneos/libPods-StreamingKit.a"; sourceTree = "<group>"; };
 		DD7DC74C1B3B29B000E5D2FC /* WLPN-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WLPN-Bridging-Header.h"; sourceTree = "<group>"; };
-		DD7DC74F1B3B357100E5D2FC /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = iOS/RootViewController.swift; sourceTree = "<group>"; };
+		DD7DC74F1B3B357100E5D2FC /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = iOS/Classes/RootViewController.swift; sourceTree = "<group>"; };
 		DDB119C01B20C29300589B94 /* Akkurat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Akkurat-Regular.otf"; path = "iOS/Resources/Akkurat-Regular.otf"; sourceTree = "<group>"; };
 		DDE7251D1B02BD0900AA769D /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		DDE7252E1B02C17100AA769D /* turntable-loop-1920x500-h264-512kbps-h264.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "turntable-loop-1920x500-h264-512kbps-h264.mp4"; path = "src/assets/videos/turntable-loop-1920x500-h264-512kbps-h264.mp4"; sourceTree = "<group>"; };
@@ -687,7 +687,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = "LaunchScreen~iphone.xib";
-			path = iOS;
+			path = iOS/Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

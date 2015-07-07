@@ -6,13 +6,6 @@
 #import "Constants.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface AudioManager()
-{
-  STKAudioPlayer *audioPlayer;
-  BOOL isPlayingWithOthers;
-}
-@end
-
 @implementation AudioManager
 
 @synthesize bridge = _bridge;
@@ -20,17 +13,20 @@
 - (AudioManager *)init
 {
   self = [super init];
-  audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .readBufferSize = LPN_AUDIO_BUFFER_SEC }];
-  [audioPlayer setDelegate:self];
-  [self setSharedAudioSessionCategory];
-  [self registerAudioInterruptionNotifications];
+  if (self) {
+    self.audioPlayer = [[STKAudioPlayer alloc] initWithOptions:(STKAudioPlayerOptions){ .readBufferSize = LPN_AUDIO_BUFFER_SEC }];
+    [self.audioPlayer setDelegate:self];
+    [self setSharedAudioSessionCategory];
+    [self registerAudioInterruptionNotifications];
+  }
+
   return self;
 }
 
 - (void)dealloc
 {
   [self unregisterAudioInterruptionNotifications];
-  [audioPlayer setDelegate:nil];
+  [self.audioPlayer setDelegate:nil];
 }
 
 
@@ -41,51 +37,50 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(play)
 {
-  if (!audioPlayer) {
+  if (!self.audioPlayer) {
     return;
   }
-  if (audioPlayer.state == STKAudioPlayerStatePaused) {
-    [audioPlayer resume];
+  if (self.audioPlayer.state == STKAudioPlayerStatePaused) {
+    [self.audioPlayer resume];
   } else {
-    [audioPlayer play:LPN_AUDIO_STREAM_URL];
+    [self.audioPlayer play:LPN_AUDIO_STREAM_URL];
   }
-
 }
 
 RCT_EXPORT_METHOD(pause)
 {
-  if (!audioPlayer) {
+  if (!self.audioPlayer) {
     return;
   } else {
-    [audioPlayer pause];
+    [self.audioPlayer pause];
   }
 }
 
 RCT_EXPORT_METHOD(resume)
 {
-  if (!audioPlayer) {
+  if (!self.audioPlayer) {
     return;
   } else {
-    [audioPlayer resume];
+    [self.audioPlayer resume];
   }
 }
 
 RCT_EXPORT_METHOD(stop)
 {
-  if (!audioPlayer) {
+  if (!self.audioPlayer) {
     return;
   } else {
-    [audioPlayer stop];
+    [self.audioPlayer stop];
   }
 }
 
 RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
 {
-  if (!audioPlayer) {
+  if (!self.audioPlayer) {
     callback(@[[NSNull null], @{@"status": @"ERROR"}]);
-  } else if ([audioPlayer state] == STKAudioPlayerStatePlaying) {
+  } else if ([self.audioPlayer state] == STKAudioPlayerStatePlaying) {
     callback(@[[NSNull null], @{@"status": @"PLAYING"}]);
-  } else if ([audioPlayer state] == STKAudioPlayerStateBuffering) {
+  } else if ([self.audioPlayer state] == STKAudioPlayerStateBuffering) {
     callback(@[[NSNull null], @{@"status": @"BUFFERING"}]);
   } else {
     callback(@[[NSNull null], @{@"status": @"STOPPED"}]);
@@ -125,7 +120,8 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
       break;
 
     case STKAudioPlayerStatePaused:
-      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent"
+      [self.bridge.eventDispatcher
+       sendDeviceEventWithName:@"AudioBridgeEvent"
                                                       body:@{@"status": @"PAUSED"}];
       break;
 
@@ -202,13 +198,13 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
   {
     case AVAudioSessionInterruptionTypeBegan:
       NSLog(@"Audio Session Interruption case started.");
-      [audioPlayer pause];
+      [self.audioPlayer pause];
       break;
 
     case AVAudioSessionInterruptionTypeEnded:
       NSLog(@"Audio Session Interruption case ended.");
-      isPlayingWithOthers = [[AVAudioSession sharedInstance] isOtherAudioPlaying];
-      (isPlayingWithOthers) ? [audioPlayer stop] : [audioPlayer resume];
+      self.isPlayingWithOthers = [[AVAudioSession sharedInstance] isOtherAudioPlaying];
+      (self.isPlayingWithOthers) ? [self.audioPlayer stop] : [self.audioPlayer resume];
       break;
 
     default:
@@ -236,7 +232,7 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
 
     case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
       // The previous audio output path is no longer available.
-      [audioPlayer stop];
+      [self.audioPlayer stop];
       break;
 
     case AVAudioSessionRouteChangeReasonCategoryChange:

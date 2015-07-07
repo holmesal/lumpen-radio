@@ -10,11 +10,11 @@ class RootViewController: UIViewController {
     return true
   }
 
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
+//  override func viewDidAppear(animated: Bool) {
+//    super.viewDidAppear(animated)
 //    self.becomeFirstResponder()
 //    UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
-  }
+//  }
 
   override func remoteControlReceivedWithEvent(event: UIEvent) {
     let remoteControl = event.subtype
@@ -32,7 +32,7 @@ class RootViewController: UIViewController {
     }
   }
 
-  deinit {
+//  deinit {
 //    UIApplication.sharedApplication().endReceivingRemoteControlEvents();
-  }
+//  }
 }

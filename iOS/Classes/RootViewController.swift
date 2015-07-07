@@ -4,7 +4,7 @@ import UIKit
 
 class RootViewController: UIViewController {
 
-  var audioManager: AudioManager = AudioManager()
+  let audioManager: AudioManager = AudioManager()
   
   override func canBecomeFirstResponder() -> Bool {
     return true
@@ -25,12 +25,15 @@ class RootViewController: UIViewController {
         println("play/pause toggled")
       case .RemoteControlPlay:
         println("play button pressed")
-        audioManager.play();
       case .RemoteControlPause:
         println("pause button pressed")
         audioManager.pause();
       default:
         break
     }
+  }
+  
+  deinit {
+    UIApplication.sharedApplication().endReceivingRemoteControlEvents();
   }
 }

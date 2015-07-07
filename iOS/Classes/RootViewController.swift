@@ -4,22 +4,22 @@ import UIKit
 
 class RootViewController: UIViewController {
 
-  let audioManager: AudioManager = AudioManager()
-  
+//  let audioManager: AudioManager = AudioManager()
+
   override func canBecomeFirstResponder() -> Bool {
     return true
   }
-  
+
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
-    self.becomeFirstResponder()
-    UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+//    self.becomeFirstResponder()
+//    UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
   }
-  
+
   override func remoteControlReceivedWithEvent(event: UIEvent) {
     let remoteControl = event.subtype
     println("received remote control \(remoteControl)")
-    
+
     switch remoteControl {
       case .RemoteControlTogglePlayPause:
         println("play/pause toggled")
@@ -27,13 +27,12 @@ class RootViewController: UIViewController {
         println("play button pressed")
       case .RemoteControlPause:
         println("pause button pressed")
-        audioManager.pause();
       default:
         break
     }
   }
-  
+
   deinit {
-    UIApplication.sharedApplication().endReceivingRemoteControlEvents();
+//    UIApplication.sharedApplication().endReceivingRemoteControlEvents();
   }
 }

@@ -213,7 +213,7 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
   }
 }
 
-- (void)onRouteChangeInterruption:(NSNotification*)notification
+- (void)onRouteChangeInterruption:(NSNotification *)notification
 {
 
   NSDictionary *interruptionDict = notification.userInfo;

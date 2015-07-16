@@ -22,7 +22,6 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		DD1EC6B91B41DFDE002B4339 /* LaunchScreen~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD1EC6B81B41DFDE002B4339 /* LaunchScreen~ipad.xib */; };
-		DD7DC7501B3B357100E5D2FC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7DC74F1B3B357100E5D2FC /* RootViewController.swift */; };
 		DDB119C11B20C29300589B94 /* Akkurat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDB119C01B20C29300589B94 /* Akkurat-Regular.otf */; };
 		DDE725231B02BD1700AA769D /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE725221B02BD0900AA769D /* libRCTVideo.a */; };
 		DDE7252F1B02C17100AA769D /* turntable-loop-1920x500-h264-512kbps-h264.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DDE7252E1B02C17100AA769D /* turntable-loop-1920x500-h264-512kbps-h264.mp4 */; };
@@ -134,8 +133,6 @@
 		DD1EC6B21B41DE36002B4339 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		DD1EC6B81B41DFDE002B4339 /* LaunchScreen~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "LaunchScreen~ipad.xib"; path = "iOS/Resources/LaunchScreen~ipad.xib"; sourceTree = "<group>"; };
 		DD3B4C341AFDC76C00BCD40D /* libPods-StreamingKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-StreamingKit.a"; path = "Pods/../build/Debug-iphoneos/libPods-StreamingKit.a"; sourceTree = "<group>"; };
-		DD7DC74C1B3B29B000E5D2FC /* WLPN-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WLPN-Bridging-Header.h"; sourceTree = "<group>"; };
-		DD7DC74F1B3B357100E5D2FC /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = iOS/Classes/RootViewController.swift; sourceTree = "<group>"; };
 		DDB119C01B20C29300589B94 /* Akkurat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Akkurat-Regular.otf"; path = "iOS/Resources/Akkurat-Regular.otf"; sourceTree = "<group>"; };
 		DDE7251D1B02BD0900AA769D /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		DDE7252E1B02C17100AA769D /* turntable-loop-1920x500-h264-512kbps-h264.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "turntable-loop-1920x500-h264-512kbps-h264.mp4"; path = "src/assets/videos/turntable-loop-1920x500-h264-512kbps-h264.mp4"; sourceTree = "<group>"; };
@@ -310,7 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				13B07FAE1A68108700A75B9A /* WLPN */,
-				DD7DC74C1B3B29B000E5D2FC /* WLPN-Bridging-Header.h */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* WLPNTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -354,7 +350,6 @@
 				DDF8C1BA1B012E4F0000C2B4 /* AppDelegate.m */,
 				DDF8C1BB1B012E4F0000C2B4 /* AudioManager.h */,
 				DDF8C1BC1B012E4F0000C2B4 /* AudioManager.m */,
-				DD7DC74F1B3B357100E5D2FC /* RootViewController.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -635,7 +630,6 @@
 			files = (
 				DDF8C1BE1B012E4F0000C2B4 /* AudioManager.m in Sources */,
 				DDF8C1BD1B012E4F0000C2B4 /* AppDelegate.m in Sources */,
-				DD7DC7501B3B357100E5D2FC /* RootViewController.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

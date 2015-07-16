@@ -85,7 +85,7 @@ To learn more about React Native and how this app is built check out the video f
 - [x] Allow audio disruption for calls, etc.
 - [x] Automatically reconnect if disconnected
 - [x] Icon long-press restarts stream
-- [ ] Support Control Center / Remote Control events (thanks to Wayne Wright for the suggestion)
+- [x] Support Control Center / Remote Control events (thanks to Wayne Wright for the suggestion)
 - [ ] Long-pauses restart stream
 - [ ] Add now playing metadata (if available)
 - [ ] Provide on-air off-air user feedback

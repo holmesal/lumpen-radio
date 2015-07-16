@@ -1,10 +1,11 @@
 //  AudioManager.m
 
-#import "RCTBridge.h"
+#import "RCTBridgeModule.h"
 #import "RCTEventDispatcher.h"
 #import "AudioManager.h"
 #import "Constants.h"
-#import <AVFoundation/AVFoundation.h>
+@import AVFoundation;
+@import MediaPlayer;
 
 @implementation AudioManager
 
@@ -18,6 +19,8 @@
     [self.audioPlayer setDelegate:self];
     [self setSharedAudioSessionCategory];
     [self registerAudioInterruptionNotifications];
+    [self registerRemoteControlEvents];
+    [self setNowPlayingInfo];
   }
 
   return self;
@@ -120,8 +123,7 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
       break;
 
     case STKAudioPlayerStatePaused:
-      [self.bridge.eventDispatcher
-       sendDeviceEventWithName:@"AudioBridgeEvent"
+      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AudioBridgeEvent"
                                                       body:@{@"status": @"PAUSED"}];
       break;
 
@@ -146,7 +148,7 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
 }
 
 
-#pragma mark - Audio Session Methods
+#pragma mark - Audio Session
 
 
 - (void)setSharedAudioSessionCategory
@@ -255,6 +257,42 @@ RCT_EXPORT_METHOD(getStatus: (RCTResponseSenderBlock) callback)
       NSLog(@"routeChangeReason : AVAudioSessionRouteChangeReasonNoSuitableRouteForCategory");
       break;
   }
+}
+
+#pragma mark - Remote Control Events
+
+- (void)registerRemoteControlEvents
+{
+  MPRemoteCommandCenter *commandCenter = [MPRemoteCommandCenter sharedCommandCenter];
+  [commandCenter.playCommand addTarget:self action:@selector(didReceivePlayCommand:)];
+  [commandCenter.pauseCommand addTarget:self action:@selector(didReceivePauseCommand:)];
+  commandCenter.stopCommand.enabled = NO;
+  commandCenter.nextTrackCommand.enabled = NO;
+  commandCenter.previousTrackCommand.enabled = NO;
+}
+
+- (void)didReceivePlayCommand:(MPRemoteCommand *)event
+{
+  [self play];
+}
+
+- (void)didReceivePauseCommand:(MPRemoteCommand *)event
+{
+  [self pause];
+}
+
+- (void)unregisterRemoteControlEvents
+{
+  MPRemoteCommandCenter *commandCenter = [MPRemoteCommandCenter sharedCommandCenter];
+  [commandCenter.playCommand removeTarget:self];
+  [commandCenter.pauseCommand removeTarget:self];
+}
+
+- (void)setNowPlayingInfo
+{
+  MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc]initWithImage:[UIImage imageNamed:@"RadioLogo"]];
+  NSDictionary *nowPlayingInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"WLPN 105.5 FM Chicago", MPMediaItemPropertyAlbumTitle, @"", MPMediaItemPropertyAlbumArtist, @"Lumpen Radio", MPMediaItemPropertyTitle, artwork, MPMediaItemPropertyArtwork, nil];
+  [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = nowPlayingInfo;
 }
 
 @end

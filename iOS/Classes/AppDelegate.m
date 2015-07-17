@@ -2,6 +2,7 @@
 
 #import "AppDelegate.h"
 #import "RCTRootView.h"
+#import "WLPN-Swift.h"
 
 @implementation AppDelegate
 
@@ -33,7 +34,7 @@
                                                    launchOptions:launchOptions];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  UIViewController *rootViewController = [[UIViewController alloc] init];
+  RootViewController *rootViewController = [[RootViewController alloc] init];
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];

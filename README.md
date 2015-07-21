@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/jhabdas/lumpen-radio.svg)](https://david-dm.org/jhabdas/lumpen-radio)
 [![devDependency Status](https://david-dm.org/jhabdas/lumpen-radio/dev-status.svg)](https://david-dm.org/jhabdas/lumpen-radio#info=devDependencies)
 
-The [Lumpen Radio](http://lumpenradio.com) App is here. Almost...
+The [Lumpen Radio App](http://appsto.re/us/NdeV7.i) is here.
 
 ![WLPN neon artowrk](https://github.com/jhabdas/lumpen-radio/blob/master/photo-original.jpg)
 

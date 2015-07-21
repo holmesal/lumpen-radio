@@ -3,6 +3,7 @@
 [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/jhabdas/lumpen-radio)
 [![Dependency Status](https://david-dm.org/jhabdas/lumpen-radio.svg)](https://david-dm.org/jhabdas/lumpen-radio)
 [![devDependency Status](https://david-dm.org/jhabdas/lumpen-radio/dev-status.svg)](https://david-dm.org/jhabdas/lumpen-radio#info=devDependencies)
+[![Tips](http://img.shields.io/gratipay/jhabdas.svg)](https://gratipay.com/jhabdas)
 
 The [Lumpen Radio App](http://appsto.re/us/NdeV7.i) is here.
 

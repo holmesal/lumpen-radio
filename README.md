@@ -20,12 +20,15 @@ The [Lumpen Radio](http://www.lumpenradio.com`) app is here!
 - Resumes playback after interruption
 - Stops playback when headset unplugged
 - Plays video loop in background
+- Allows remote control from headphones
+- Control app from lock screen and Control Center
 - 20s buffer to help support poor connections
+- Supports iPad and iPhone with iOS 8+
 
 ## Getting started
 
-1. Clone this project
-2. Install dependencies:
+1. Clone this project.
+2. Install dependencies.
 
     ```sh
     pod install
@@ -110,7 +113,7 @@ Turntable loop video by [Scott Schiller](http://www.scottschiller.com/), BSD.
 
 Inspired by [open source work](https://github.com/stetro/domradio-ios/) by Steffen Tröster.
 
-Many thanks to Public Media Institute, [Lumpen Radio](http://www.lumpenradio.com) and all the wonderful beta testers for helping make this happen. You are beautiful.
+Many thanks to [Public Media Institute](http://www.publicmediainstitute.com/), [Lumpen Radio](http://www.lumpenradio.com) and all the wonderful beta testers for helping make this happen. You are beautiful.
 
 - Ed Marszewski
 - Logan Bay

@@ -100,6 +100,7 @@ To learn more about React Native and how this app is built check out the video f
 - [x] Audio stream does not automatically restart after some device interruptions (e.g. incoming call sent to voice mail)
 - [ ] Audio buffer out after 20 seconds of interrupted call time followed by 20 seconds of play
 - [ ] Play button does not function when disconnected from the Internet
+- [ ] App appears to buffer indefinitely if playing and Internet connection restarted
 - [x] Launch screen skews on iPad
 
 ## Credits

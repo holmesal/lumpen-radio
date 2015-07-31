@@ -45,7 +45,7 @@ The [Lumpen Radio](http://www.lumpenradio.com`) app is here!
 
 ## Digging in
 
-To learn more about React Native and how this app is built check out the video from the talk given to the React group in Chicago on [30 Jun 2015](http://www.meetup.com/React-Chicago/events/222510246/) and the [accompanying slide deck](https://slides.com/jhabdas/streaming-audio-react-native).
+To learn more about React Native and how this app is built check out [the slides](http://slides.com/jhabdas/streaming-audio-react-native/) originating from [my talk](http://www.meetup.com/React-Chicago/events/222510246/) on <time datetime="2015-06-30 18:00">30 Jun 2015</time>. Additional materials will become available following a [free Webcast](http://www.oreilly.com/pub/e/3483) offered in partnership with O'Reilly Media (scheduled <time datetime="2015-08-27 18:00">27 Aug 2015</time>).
 
 ## File Structure
 

@@ -28,6 +28,8 @@
 		DDE7252F1B02C17100AA769D /* turntable-loop-1920x500-h264-512kbps-h264.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DDE7252E1B02C17100AA769D /* turntable-loop-1920x500-h264-512kbps-h264.mp4 */; };
 		DDF8C1BD1B012E4F0000C2B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF8C1BA1B012E4F0000C2B4 /* AppDelegate.m */; };
 		DDF8C1BE1B012E4F0000C2B4 /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF8C1BC1B012E4F0000C2B4 /* AudioManager.m */; };
+		DDF941161B73DB65007A3B75 /* libReactNativeLocalization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF941151B73DB3E007A3B75 /* libReactNativeLocalization.a */; };
+		DDF941231B73FFFE007A3B75 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDF941251B73FFFE007A3B75 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTVideo;
 		};
+		DDF941141B73DB3E007A3B75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDF941061B73DB3E007A3B75 /* ReactNativeLocalization.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7B5D9D0A1B6AD0EA00CF3A83;
+			remoteInfo = ReactNativeLocalization;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +153,11 @@
 		DDF8C1BB1B012E4F0000C2B4 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioManager.h; path = iOS/Classes/AudioManager.h; sourceTree = "<group>"; };
 		DDF8C1BC1B012E4F0000C2B4 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioManager.m; path = iOS/Classes/AudioManager.m; sourceTree = "<group>"; };
 		DDF8C1BF1B012F240000C2B4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = iOS/Constants.h; sourceTree = "<group>"; };
+		DDF941061B73DB3E007A3B75 /* ReactNativeLocalization.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeLocalization.xcodeproj; path = "node_modules/react-native-localization/ReactNativeLocalization.xcodeproj"; sourceTree = "<group>"; };
+		DDF941241B73FFFE007A3B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DDF941261B74001E007A3B75 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DDF941281B740032007A3B75 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DDF941291B740431007A3B75 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF941161B73DB65007A3B75 /* libReactNativeLocalization.a in Frameworks */,
 				DDE725231B02BD1700AA769D /* libRCTVideo.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -244,6 +259,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				DD3C9D071B57693E00885527 /* WLPN-Bridging-Header.h */,
+				DDF941251B73FFFE007A3B75 /* Localizable.strings */,
 			);
 			name = WLPN;
 			sourceTree = "<group>";
@@ -285,6 +301,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				DDF941061B73DB3E007A3B75 /* ReactNativeLocalization.xcodeproj */,
 				DD1EC6B21B41DE36002B4339 /* RCTWebSocket.xcodeproj */,
 				DDE7251D1B02BD0900AA769D /* RCTVideo.xcodeproj */,
 				78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */,
@@ -367,6 +384,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		DDF941071B73DB3E007A3B75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDF941151B73DB3E007A3B75 /* libReactNativeLocalization.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -437,6 +462,9 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				es,
+				zh,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -481,6 +509,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = DDF941071B73DB3E007A3B75 /* Products */;
+					ProjectRef = DDF941061B73DB3E007A3B75 /* ReactNativeLocalization.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -562,6 +594,13 @@
 			remoteRef = DDE725211B02BD0900AA769D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		DDF941151B73DB3E007A3B75 /* libReactNativeLocalization.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeLocalization.a;
+			remoteRef = DDF941141B73DB3E007A3B75 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -579,6 +618,7 @@
 				008F07F31AC5B25A0029DE68 /* main.jsbundle in Resources */,
 				DDE7252F1B02C17100AA769D /* turntable-loop-1920x500-h264-512kbps-h264.mp4 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				DDF941231B73FFFE007A3B75 /* Localizable.strings in Resources */,
 				DD1EC6B91B41DFDE002B4339 /* LaunchScreen~ipad.xib in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen~iphone.xib in Resources */,
 				DDB119C11B20C29300589B94 /* Akkurat-Regular.otf in Resources */,
@@ -658,6 +698,18 @@
 			);
 			name = "LaunchScreen~iphone.xib";
 			path = iOS/Resources;
+			sourceTree = "<group>";
+		};
+		DDF941251B73FFFE007A3B75 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDF941241B73FFFE007A3B75 /* Base */,
+				DDF941261B74001E007A3B75 /* de */,
+				DDF941281B740032007A3B75 /* es */,
+				DDF941291B740431007A3B75 /* zh */,
+			);
+			name = Localizable.strings;
+			path = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -800,7 +852,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/node_modules/react-native/React/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
@@ -841,7 +893,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/node_modules/react-native/React/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;

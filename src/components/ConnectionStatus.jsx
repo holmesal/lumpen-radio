@@ -34,7 +34,7 @@ let localizedStatus = new LocalizedStrings({
     error: "Tippe oben lange um neu zu starten.",
     disconnected: "Verbinde dich mit dem Internet um zu hören."
   },
-  zh: {
+  "zh-Hans": {
     playing: "现正播放无广告时段！",
     paused: "按上面来继续收听。",
     stopped: "按上面来切换电台。",

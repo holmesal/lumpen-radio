@@ -12,9 +12,10 @@ Never listen to a radio commercial again. The free [Lumpen Radio app](http://app
 ## Features
 
 - Streams WLPN-LP 105.5 FM Lumpen Radio Chicago
-- Gorgeous video loop ready for AirPlay streaming
+- Gorgeous video loop ready with AirPlay support
 - Intelligent handling of common audio interruptions
 - Detailed connection status and play state messaging
+- Translations for English, Spanish, German and Chinese
 - Remote control via Bluetooth and compatible headset
 - Supports iPad and iPhone with iOS 8+
 

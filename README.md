@@ -5,25 +5,24 @@
 [![devDependency Status](https://david-dm.org/jhabdas/lumpen-radio/dev-status.svg)](https://david-dm.org/jhabdas/lumpen-radio#info=devDependencies)
 [![Tips](http://img.shields.io/gratipay/jhabdas.svg)](https://gratipay.com/jhabdas)
 
-The free [Lumpen Radio app](http://appsto.re/us/NdeV7.i) is here!
+Never listen to a radio commercial again. The free [Lumpen Radio app](http://appsto.re/us/NdeV7.i) is here!
 
 ![WLPN neon artowrk](https://github.com/jhabdas/lumpen-radio/blob/master/photo-original.jpg)
 
 ## Features
 
-- Streams Lumpen Radio over HTTP
-- Pressing button starts/pauses stream
-- Button long-press restarts stream
-- Shows connection status in app
-- Provides instruction for error cases
-- Indicates when stream is buffering
-- Resumes playback after interruption
-- Stops playback when headset unplugged
-- Plays video loop in background
-- Allows remote control from headphones
-- Control app from lock screen and Control Center
-- 20s buffer to help support poor connections
+- Streams WLPN-LP 105.5 FM Lumpen Radio Chicago
+- Gorgeous video loop ready for AirPlay streaming
+- Intelligent handling of common audio interruptions
+- Detailed connection status and play state messaging
+- Remote control via Bluetooth and compatible headset
 - Supports iPad and iPhone with iOS 8+
+
+## Usage
+
+- Tapping radio button starts and stops the audio
+- Long-pressing the radio button restarts the audio
+- If the app crashes for any reason please close and reopen it
 
 ## Getting started
 
@@ -35,7 +34,7 @@ The free [Lumpen Radio app](http://appsto.re/us/NdeV7.i) is here!
     npm install
     ```
 
-    If you run into problems with the Pod installation please review [CocoaPods Troubleshooting](https://guides.cocoapods.org/using/troubleshooting.html) and pay special attetion to any error messages received during the Pod installation.
+    **Note:** If, no when, you run into problems with the Pod installation please review [CocoaPods Troubleshooting](https://guides.cocoapods.org/using/troubleshooting.html) and pay special attetion to any error messages received during the Pod installation.
 
 3. Run `npm start` to start the Webpack watcher and the React Packager in a single shot.
 
@@ -90,9 +89,13 @@ To learn more about React Native and how this app is built check out [the slides
 - [x] Automatically reconnect if disconnected
 - [x] Icon long-press restarts stream
 - [x] Support Control Center / Remote Control events (thanks to Wayne Wright for the suggestion)
+- [ ] Integrate push notifications
+
+# Ideas
+
 - [ ] Long-pauses restart stream
 - [ ] Add now playing metadata (if available)
-- [ ] Provide on-air off-air user feedback
+- [ ] Provide on-air/off-air indication
 
 ## Known issues
 
